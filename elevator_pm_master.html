@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目管理文档 — Elevator — Don't Touch</title>
+<style>
+  :root {
+    --bg: #f9f7f4; --card: #ffffff; --text: #1e1b18;
+    --text-secondary: #5c554e; --text-muted: #9b9489; --accent: #b8753e;
+    --accent-dim: #d4a76a; --accent-subtle: #f5ede0; --border: #e8e2d8;
+    --highlight-bg: #faf7f0; --shadow-sm: 0 1px 3px rgba(80,60,30,0.04);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85; -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%23d4c8b0' fill-opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 60px 60px; pointer-events: none; z-index: -1;
+  }
+  .wrapper { max-width: 860px; margin: 0 auto; padding: 3rem 2rem; }
+  .back { display: inline-block; margin-bottom: 2rem; color: var(--accent); text-decoration: none; font-size: 0.85rem; }
+  .back:hover { text-decoration: underline; }
+  .doc-title { font-size: 1.8rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+  .doc-sub { font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem; }
+  .section { margin-bottom: 2.5rem; }
+  .section h2 {
+    font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: var(--accent);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section h2::before { content: ""; display: inline-block; width: 3px; height: 1.2em; background: var(--accent); border-radius: 2px; }
+  .section h3 { font-size: 1.05rem; font-weight: 600; margin: 1.5rem 0 0.75rem; color: var(--text); }
+  .section h4 { font-size: 0.95rem; font-weight: 600; margin: 1rem 0 0.5rem; color: var(--text-secondary); }
+  .section p { color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 0.75rem; line-height: 1.85; }
+  .table-wrap { overflow-x: auto; margin: 1rem 0 1.5rem; }
+  table {
+    width: 100%; border-collapse: collapse; font-size: 0.82rem;
+    background: var(--card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border);
+  }
+  th { background: var(--accent-subtle); padding: 0.5rem 0.7rem; text-align: left; font-weight: 600; color: var(--accent); font-size: 0.76rem; letter-spacing: 0.04em; white-space: nowrap; }
+  td { padding: 0.45rem 0.7rem; border-top: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--highlight-bg); }
+  footer { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2rem; }
+  @media (max-width: 768px) {
+    .wrapper { padding: 2rem 1.25rem; }
+    .doc-title { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <a href="index.html" class="back">← 返回作品集</a>
+  <h1 class="doc-title">项目管理文档</h1>
+  <p class="doc-sub">Elevator — Don't Touch（别按那个键）· 第一人称 3D 密室互动恐怖游戏</p>
+  <div class="section"><h2>项目管理文档</h2>
+<p>Elevator — Don&#x27;t Touch（别按那个键） 项目：Elevator — Don&#x27;t Touch（别按那个键） 类型：第一人称 3D 密室互动恐怖游戏 引擎：Unity</p>
+</div>
+<div class="section"><h2>一、项目总览</h2>
+<div class="table-wrap"><table><thead><tr><th>项目</th><th>说明</th></tr></thead><tbody><tr><td>总周期</td><td>约 14–21 天</td></tr><tr><td>阶段划分</td><td>Phase 0 准备 → Phase 1 灰盒 → Phase 2 美术集成 → Phase 3 音效集成 → Phase 4 打磨测试</td></tr><tr><td>团队规模</td><td>程序 ×2 + 美术 ×2 + 音效 ×1 = 5人</td></tr><tr><td>产出文档</td><td>11 份规范化项目文档</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>二、里程碑计划</h2>
+<p>阶段总览 总周期约 14-21 天，分4个阶段：</p>
+<p style="padding-left:1rem;">• Phase 0 准备阶段（6.16-6.18）：统一策划案</p>
+<p style="padding-left:1rem;">• Phase 1 灰盒阶段（6.18-6.22）：核心系统搭建、11事件逻辑跑通、美术资产制作</p>
+<p style="padding-left:1rem;">• Phase 2 美术集成（6.22-6.24）：美术资产集成、音效制作</p>
+<p style="padding-left:1rem;">• Phase 3 音效集成（6.24-6.25天）：音效集成</p>
+<p style="padding-left:1rem;">• Phase 4 打磨测试（6.25-6.28）：测试、平衡调整、打包发布</p>
+<p style="padding-left:1rem;">3.3 Phase 1 · 灰盒阶段（6.18-6.22）</p>
+<p style="padding-left:1rem;">3.4 Phase 2 · 美术集成阶段（6.22-6.24）</p>
+<h4>★ 里程碑：V0.5 美术集成版本</h4>
+<p style="padding-left:1rem;">3.5 Phase 3 · 音效集成阶段（Day 15-18，共4天）</p>
+<p>【程序B - 音效集成】</p>
+<h4>★ 里程碑：V0.8 音效集成版本</h4>
+<p style="padding-left:1rem;">3.6 Phase 4 · 打磨与测试（Day 19-21，共3天）</p>
+<h4>★ 里程碑：V1.0 正式版本</h4>
+</div>
+<div class="section"><h3>2.1 里程碑与验收标准</h3>
+<div class="table-wrap"><table><thead><tr><th>版本</th><th>时间节点</th><th>验收标准</th></tr></thead><tbody><tr><td>V0.1 灰盒可玩版本</td><td>Day 8</td><td>11个事件均可触发；电梯正常运行（移动/停靠/门开关）；理智值系统工作；按钮交互正常；胜利/死亡判定正确</td></tr><tr><td>V0.5 美术集成版本</td><td>Day 14</td><td>电梯最终模型上线；所有P0场景上线；UI界面完整；事件表现基本完成</td></tr><tr><td>V0.8 音效集成版本</td><td>Day 18</td><td>所有P0音效上线；语音台词播放正常；3D空间音效正确；呼吸声随理智值变化</td></tr><tr><td>V1.0 正式版本</td><td>Day 21</td><td>完整流程可跑通；无明显Bug；难度平衡合理；打包exe/app可执行文件</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>三、团队分工</h2>
+</div>
+<div class="section"><h3>3.1 程序 A — 核心系统</h3>
+<p>职责：GameManager（全局状态机）、ElevatorController（21层电梯状态机）、SanitySystem（理智值系统）、EventManager（事件触发检测与调度） 交付物：C# 接口定义文档、JSON 配置表规范、核心系统联调测试</p>
+</div>
+<div class="section"><h3>3.2 程序 B — 事件/UI/输入集成</h3>
+<p>职责：基于程序A接口搭建事件逻辑框架、实现11个事件的具体表现、输入系统（鼠标点击按钮）、UI框架（理智值HUD/楼层显示）、AudioManager框架 交付物：事件逻辑实现、UI系统、音效集成</p>
+</div>
+<div class="section"><h3>3.3 美术 A — 电梯/场景/UI</h3>
+<p>职责：电梯模型（轿厢/门/按钮面板/天花板）、各楼层场景、UI界面（理智值指示器/按钮高亮/暗角特效） 交付物：电梯最终模型、6个楼层场景、UI界面、特效</p>
+</div>
+<div class="section"><h3>3.4 美术 B — 角色/道具</h3>
+<p>职责：假模特模型（3个姿态）、NPC（替死人）模型+动画、B1人影、青色手、电梯内道具（灭火器/广告/扶手/合格证）、走廊道具 交付物：角色模型、道具模型、动画</p>
+</div>
+<div class="section"><h3>3.5 音效师</h3>
+<p>职责：电梯机械音（5个）、环境音（4个）、UI音效（4个）、事件辅助音效（10个事件配套）、语音台词录制/处理（9段）、玩家呼吸声（4个版本）、事件专属音效（25个） 交付物：约30个音效文件</p>
+</div>
+<div class="section"><h2>四、详细分工表</h2>
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>状态</th></tr></thead><tbody><tr><td>框架（状态机）</td><td></td></tr><tr><td>（电梯移动/停靠/门）</td><td></td></tr><tr><td>理智值掉落/恢复/阈值</td><td></td></tr><tr><td>触发条件检测</td><td></td></tr><tr><td>提供C#接口定义文档</td><td></td></tr><tr><td>核心系统联调测试</td><td></td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>状态</th></tr></thead><tbody><tr><td>基于程序A接口，搭建事件逻辑框架</td><td></td></tr><tr><td>实现11个事件的具体表现（灰盒版本）</td><td></td></tr><tr><td>输入系统（鼠标点击按钮）</td><td></td></tr><tr><td>UI框架（理智值HUD、楼层显示）</td><td></td></tr><tr><td>AudioManager框架（预留接口）</td><td></td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th></tr></thead><tbody><tr><td>电梯白盒模型（无材质）</td></tr><tr><td>各楼层走廊白盒场景</td></tr><tr><td>假模特白盒（3个姿态）</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th></tr></thead><tbody><tr><td>输出事件配置表（Excel/JSON）</td></tr><tr><td>在灰盒版本中验收11事件触发逻辑</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>截止</th><th>优先级</th><th>状态</th></tr></thead><tbody><tr><td>电梯最终模型（轿厢/门/按钮面板/天花板）</td><td>Day 10</td><td>P0</td><td></td></tr><tr><td>电梯材质（金属划痕/污渍）</td><td>Day 10</td><td>P0</td><td></td></tr><tr><td>B1地下车库走廊场景</td><td>Day 11</td><td>P0</td><td></td></tr><tr><td>3F假模特走廊场景</td><td>Day 11</td><td>P0</td><td></td></tr><tr><td>6F走廊场景</td><td>Day 12</td><td>P1</td><td></td></tr><tr><td>8.5层扭曲场景</td><td>Day 12</td><td>P0</td><td></td></tr><tr><td>13F电梯门外场景（青色手）</td><td>Day 12</td><td>P0</td><td></td></tr><tr><td>2F血手印墙</td><td>Day 11</td><td>P0</td><td></td></tr><tr><td>15F走廊场景</td><td>Day 13</td><td>P1</td><td></td></tr><tr><td>16F走廊场景（暖光）</td><td>Day 13</td><td>P1</td><td></td></tr><tr><td>UI界面（理智值指示器/血手印墙等）</td><td>Day 13</td><td>P0</td><td></td></tr><tr><td>特效（灯光闪烁/水滴粒子/暗角/黑屏）</td><td>Day 14</td><td>P1</td><td></td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>截止</th><th>优先级</th><th>状态</th></tr></thead><tbody><tr><td>假模特最终模型（3个姿态）</td><td>Day 10</td><td>P0</td><td></td></tr><tr><td>NPC（替死人）模型+动画</td><td>Day 12</td><td>P0</td><td></td></tr><tr><td>B1人影（低面背景元素）</td><td>Day 11</td><td>P1</td><td></td></tr><tr><td>青色手（特写级细节）</td><td>Day 11</td><td>P0</td><td></td></tr><tr><td>电梯内道具（灭火器/广告/扶手/合格证）</td><td>Day 12</td><td>P1</td><td></td></tr><tr><td>走廊道具（办公椅/办公桌/吊顶破损/告示）</td><td>Day 13</td><td>P2</td><td></td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>截止</th></tr></thead><tbody><tr><td>集成电梯最终模型</td><td>Day 11</td></tr><tr><td>集成各楼层场景</td><td>Day 14</td></tr><tr><td>集成UI界面</td><td>Day 14</td></tr><tr><td>集成特效</td><td>Day 14</td></tr><tr><td>按钮背光可控（程序控制材质Emissive）</td><td>Day 11</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>截止</th><th>优先级</th><th>状态</th></tr></thead><tbody><tr><td>电梯机械音（5个：start/stop/moving/door_open/door_close）</td><td>Day 15</td><td>P0</td><td></td></tr><tr><td>按钮音效（press/denied）</td><td>Day 15</td><td>P0</td><td></td></tr><tr><td>环境音（电梯底噪/走廊/8.5层/通风口）</td><td>Day 16</td><td>P0</td><td></td></tr><tr><td>UI音效（理智变化/胜利/死亡）</td><td>Day 16</td><td>P0</td><td></td></tr><tr><td>事件辅助音效（10个事件配套）</td><td>Day 17</td><td>P0</td><td></td></tr><tr><td>语音台词录制/处理（9段）</td><td>Day 17</td><td>P0</td><td></td></tr><tr><td>玩家呼吸声（4个版本）</td><td>Day 16</td><td>P0</td><td></td></tr><tr><td>事件专属音效（25个）</td><td>Day 18</td><td>P1</td><td></td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>截止</th></tr></thead><tbody><tr><td>AudioManager集成所有P0音效</td><td>Day 16</td></tr><tr><td>2D/3D音效空间化配置</td><td>Day 17</td></tr><tr><td>电梯内混响Zone配置</td><td>Day 17</td></tr><tr><td>呼吸声根据理智值切换（crossfade）</td><td>Day 17</td></tr><tr><td>低通滤波效果（事件05/06/09）</td><td>Day 18</td></tr><tr><td>语音字幕系统</td><td>Day 18</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>任务</th><th>负责人</th><th>截止</th></tr></thead><tbody><tr><td>完整流程测试（跑通所有11事件）</td><td>全体</td><td>Day 19</td></tr><tr><td>难度平衡调整（理智值掉落速度/事件触发频率）</td><td>策划+程序</td><td>Day 20</td></tr><tr><td>Bug修复</td><td>程序A/B</td><td>Day 20</td></tr><tr><td>恐怖氛围效果验收（美术+音效+程序联合）</td><td>全体</td><td>Day 20</td></tr><tr><td>性能优化（DrawCall/音效内存）</td><td>程序A/B</td><td>Day 20</td></tr><tr><td>打包Windows/macOS版本</td><td>程序A</td><td>Day 21</td></tr><tr><td>撰写测试报告</td><td>策划</td><td>Day 21</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>命名格式</th></tr></thead><tbody><tr><td>电梯</td><td>ELEV_轿厢.fbx / ELEV_门.fbx / ELEV_按钮面板.fbx</td></tr><tr><td>场景</td><td>SCENE_B1 / SCENE_3F / SCENE_8F_HALF</td></tr><tr><td>UI</td><td>UI_理智值.png / UI_按钮高亮.png</td></tr><tr><td>特效</td><td>FX_灯光闪烁.shader / FX_水滴粒子.prefab</td></tr><tr><td>材质</td><td>MAT_电梯金属.png / MAT_血手印.png</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>命名格式</th></tr></thead><tbody><tr><td>电梯机械音</td><td>SFX_mech_elevator_start.wav</td></tr><tr><td>环境音</td><td>SFX_ambient_corridor_8F.wav</td></tr><tr><td>UI音效</td><td>SFX_UI_button_press.wav</td></tr><tr><td>语音台词</td><td>VO_001.wav / VO_002_processed.wav</td></tr><tr><td>呼吸声</td><td>BREATH_normal.wav / BREATH_panic.wav</td></tr><tr><td>事件音效</td><td>EVT_04_puppet_walk.wav</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>类别</th><th>路径/命名</th></tr></thead><tbody><tr><td>核心系统</td><td>Core/GameManager.cs</td></tr><tr><td></td><td>Core/ElevatorController.cs</td></tr><tr><td></td><td>Core/SanitySystem.cs</td></tr><tr><td></td><td>Core/EventManager.cs</td></tr><tr><td>事件逻辑</td><td>Events/Event_001.cs ~ Event_011.cs</td></tr><tr><td>UI</td><td>UI/UIManager.cs</td></tr><tr><td>音效</td><td>Audio/AudioManager.cs</td></tr><tr><td>输入</td><td>Input/InputManager.cs</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>数值</th></tr></thead><tbody><tr><td>初始理智值</td><td>100</td></tr><tr><td>自然掉落间隔</td><td>1.81秒/点（游戏开始到第一次按按钮）</td></tr><tr><td>事件04触发后额外掉落</td><td>每3秒-1点（理智&lt;60时）</td></tr><tr><td>事件11恢复值</td><td>+20（仅限一次）</td></tr><tr><td>死亡阈值</td><td>0</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>参数</th><th>数值</th></tr></thead><tbody><tr><td>楼层范围</td><td>B1 ~ 20F（共21层）</td></tr><tr><td>运行速度</td><td>2秒/层</td></tr><tr><td>开门时间</td><td>3秒（事件07除外）</td></tr><tr><td>事件07开门幅度</td><td>10-15cm反复开合</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>用途</th><th>工具</th></tr></thead><tbody><tr><td>日常沟通</td><td>微信群</td></tr><tr><td>任务管理</td><td>TAPD / 腾讯文档</td></tr><tr><td>代码管理</td><td>GitHub / Gitee</td></tr><tr><td>美术资产共享</td><td>腾讯文档共享文件夹</td></tr><tr><td>音效文件共享</td><td>腾讯文档共享文件夹</td></tr><tr><td>会议</td><td>腾讯会议</td></tr><tr><td>文档协作</td><td>腾讯文档 / 企业微信文档</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>#</th><th>风险描述</th><th>概率</th><th>影响</th><th>应对措施</th></tr></thead><tbody><tr><td>R1</td><td>程序A/B接口对接出问题</td><td>高</td><td>高</td><td>提前约定接口文档，Day3前交付；每日同步</td></tr><tr><td>R2</td><td>音效工作量过大，一人无法按时完成</td><td>中</td><td>中</td><td>优先做P0核心音效；非核心可简化或用免费音效库</td></tr><tr><td>R3</td><td>美术资产交付延迟</td><td>中</td><td>高</td><td>程序用灰盒/占位符继续开发，不阻塞</td></tr><tr><td>R4</td><td>11事件逻辑复杂，调试耗时超预期</td><td>高</td><td>中</td><td>Phase1优先跑通触发逻辑，表现层可后补</td></tr><tr><td>R5</td><td>恐怖氛围效果不达预期</td><td>中</td><td>中</td><td>Phase2早期做玩法原型，全员体验反馈</td></tr><tr><td>R6</td><td>Unity版本/插件兼容性问题</td><td>低</td><td>高</td><td>Phase0确定版本并锁定，不随意升级</td></tr><tr><td>R7</td><td>Git合并冲突，场景文件损坏</td><td>中</td><td>高</td><td>使用Prefab拆分，禁止多人改同一场景</td></tr></tbody></table></div>
+
+<div class="table-wrap"><table><thead><tr><th>会议</th><th>时间</th><th>参与人</th><th>目的</th></tr></thead><tbody><tr><td>项目启动会</td><td>Day 0</td><td>全体</td><td>统一策划案，确认分工</td></tr><tr><td>接口对接会</td><td>Day 3</td><td>程序A+B</td><td>确认核心系统接口</td></tr><tr><td>Phase 1 验收会</td><td>Day 8</td><td>全体</td><td>验收灰盒版本</td></tr><tr><td>美术资产验收</td><td>Day 12</td><td>美术A/B+程序B</td><td>验收美术资产</td></tr><tr><td>Phase 2 验收会</td><td>Day 14</td><td>全体</td><td>验收美术集成版本</td></tr><tr><td>音效验收</td><td>Day 17</td><td>音效+程序B</td><td>验收音效集成</td></tr><tr><td>最终测试会</td><td>Day 20</td><td>全体</td><td>验收V1.0</td></tr><tr><td>项目复盘</td><td>Day 21+</td><td>全体</td><td>总结复盘</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>五、项目管理规范</h2>
+</div>
+<div class="section"><h3>5.1 每日站会（15分钟）</h3>
+<p>每天固定时间，格式如下：</p>
+<p style="padding-left:1rem;">• 昨天完成了什么？</p>
+<p style="padding-left:1rem;">• 今天计划做什么？</p>
+<p style="padding-left:1rem;">• 遇到什么阻碍？</p>
+</div>
+<div class="section"><h3>5.2 任务看板</h3>
+<p>推荐使用 TAPD 或腾讯文档在线表格，列名：</p>
+<p style="padding-left:1rem;">• 📋 TODO  • 🔄 进行中  • 👀 待测试  • ✅ 已完成  • ❌ 已阻塞</p>
+<p>每个任务需标注：负责人 / 预计工时 / 截止日期</p>
+</div>
+<div class="section"><h3>5.3 Git 分支规范</h3>
+<p style="padding-left:1rem;">• main 分支：正式版本，仅限 Phase 里程碑合并</p>
+<p style="padding-left:1rem;">• dev 分支：日常开发集成</p>
+<p style="padding-left:1rem;">• feature/xxx 分支：各人功能分支</p>
+<p style="padding-left:1rem;">• 提交规范：[类型] 描述，如 [Event] 实现事件04人偶入电梯逻辑</p>
+<p style="padding-left:1rem;">• Unity 场景管理：禁止多人同时修改同一场景，使用 Prefab 拆分</p>
+</div>
+<div class="section"><h3>5.4 文件命名规范</h3>
+<p>美术文件：ELEV_轿厢.fbx / SCENE_B1 / UI_理智值.png / FX_灯光闪烁.shader 音效文件：SFX_mech_elevator_start.wav / SFX_ambient_corridor_8F.wav / VO_001.wav 程序文件：Core/GameManager.cs / Events/Event_001.cs / UI/UIManager.cs</p>
+</div>
+<div class="section"><h2>六、风险管理</h2>
+<div class="table-wrap"><table><thead><tr><th>#</th><th>风险描述</th><th>概率</th><th>影响</th><th>应对措施</th></tr></thead><tbody><tr><td>R1</td><td>程序A/B接口对接出问题</td><td>高</td><td>高</td><td>提前约定接口文档，Day3前交付；每日同步</td></tr><tr><td>R2</td><td>音效工作量过大，一人无法按时完成</td><td>中</td><td>中</td><td>优先做P0核心音效；非核心可简化或用免费音效库</td></tr><tr><td>R3</td><td>美术资产交付延迟</td><td>中</td><td>高</td><td>程序用灰盒/占位符继续开发，不阻塞</td></tr><tr><td>R4</td><td>11事件逻辑复杂，调试耗时超预期</td><td>高</td><td>中</td><td>Phase1优先跑通触发逻辑，表现层可后补</td></tr><tr><td>R5</td><td>恐怖氛围效果不达预期</td><td>中</td><td>中</td><td>Phase2早期做玩法原型，全员体验反馈</td></tr><tr><td>R6</td><td>Unity版本/插件兼容性问题</td><td>低</td><td>高</td><td>Phase0确定版本并锁定，不随意升级</td></tr><tr><td>R7</td><td>Git合并冲突，场景文件损坏</td><td>中</td><td>高</td><td>使用Prefab拆分，禁止多人改同一场景</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>七、会议计划</h2>
+<div class="table-wrap"><table><thead><tr><th>会议</th><th>时间</th><th>参与人</th><th>目的</th></tr></thead><tbody><tr><td>项目启动会</td><td>Day 0</td><td>全体</td><td>统一策划案，确认分工</td></tr><tr><td>接口对接会</td><td>Day 3</td><td>程序A+B</td><td>确认核心系统接口</td></tr><tr><td>Phase 1 验收会</td><td>Day 8</td><td>全体</td><td>验收灰盒版本</td></tr><tr><td>美术资产验收</td><td>Day 12</td><td>美术A/B+程序B</td><td>验收美术资产</td></tr><tr><td>Phase 2 验收会</td><td>Day 14</td><td>全体</td><td>验收美术集成版本</td></tr><tr><td>音效验收</td><td>Day 17</td><td>音效+程序B</td><td>验收音效集成</td></tr><tr><td>最终测试会</td><td>Day 20</td><td>全体</td><td>验收 V1.0</td></tr><tr><td>项目复盘</td><td>Day 21+</td><td>全体</td><td>总结复盘</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>八、沟通渠道</h2>
+<div class="table-wrap"><table><thead><tr><th>用途</th><th>工具</th></tr></thead><tbody><tr><td>日常沟通</td><td>微信群</td></tr><tr><td>任务管理</td><td>TAPD / 腾讯文档</td></tr><tr><td>代码管理</td><td>GitHub / Gitee</td></tr><tr><td>美术资产共享</td><td>腾讯文档共享文件夹</td></tr><tr><td>音效文件共享</td><td>腾讯文档共享文件夹</td></tr><tr><td>会议</td><td>腾讯会议</td></tr><tr><td>文档协作</td><td>腾讯文档 / 企业微信文档</td></tr></tbody></table></div>
+</div>
+<div class="section"><h2>九、文档产出清单</h2>
+<p>本项目共交付 11 份规范化文档，整合后为 4 份核心文档：</p>
+<p style="padding-left:1rem;">1. 游戏设计总纲 — 策划案 + 事件策划 + 事件细节 + 事件配置表 + 箱庭细节</p>
+<p style="padding-left:1rem;">2. 项目管理文档 — 里程碑计划 + 团队分工 + 管理规范 + 风险 + 会议（本文档）</p>
+<p style="padding-left:1rem;">3. 美术需求文档 — 角色/道具/摆件 + 电梯/场景/UI</p>
+<p style="padding-left:1rem;">4. 音效需求文档 — 机械环境 + 语音事件</p>
+</div>
+</div>
+<footer><p>© 2026 代立强 · Elevator — Don't Touch 项目文档</p></footer>
+</body>
+</html>
