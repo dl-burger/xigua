@@ -139,6 +139,7 @@
     <ul class="links">
       <li><a href="#elevator">Elevator</a></li>
       <li><a href="#david">David the Helldiver</a></li>
+      <li><a href="#delta">三角洲分析</a></li>
       <li><a href="#about">关于我</a></li>
     </ul>
   </div>
@@ -172,7 +173,7 @@
     </div>
     <div class="project-body">
       <h3>别按那个键</h3>
-      <p class="role">主策划 & 制作人 · Unity · 开发周期 14-21 天 · 产出 10 份规范化项目文档</p>
+      <p class="role">主策划 & 制作人 · Unity · 开发周期 14-21 天 · 产出 11 份规范化项目文档</p>
       <p class="desc">
         一款以「禁忌诱惑」和「理智衰减」为核心的第一人称 3D 密室互动恐怖游戏。玩家被困于一座看似普通的电梯中，
         随着按键行为逐步揭开隐藏在日常空间下的恐惧真相。融合梦核（Liminal Space）美学与日式怪谈叙事，
@@ -190,7 +191,7 @@
 
       <div class="meta-grid">
         <div class="meta-item"><div class="label">项目角色</div><div class="value">主策划 + 制作人</div></div>
-        <div class="meta-item"><div class="label">产出文档</div><div class="value">10 份规范化文档</div></div>
+        <div class="meta-item"><div class="label">产出文档</div><div class="value">11 份规范化文档</div></div>
         <div class="meta-item"><div class="label">事件数量</div><div class="value">11 个递进式事件</div></div>
         <div class="meta-item"><div class="label">团队规模</div><div class="value">程序 ×2 + 美术 ×2 + 音效 ×1</div></div>
       </div>
@@ -222,6 +223,89 @@
             程序 B（事件/UI/输入集成）、美术 A（电梯场景UI）、美术 B（角色道具）、
             音效师（机械环境 + 语音事件）分别编写独立需求分工文档。
             建立 Git 分支规范、JSON 配置表标准、每日站会制度和任务看板流程。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">核心系统架构设计</div>
+          <div class="hl-content">
+            设计了四个核心模块的完整架构：GameManager（全局状态机：主菜单→游戏中→胜利/死亡）、
+            ElevatorController（21 层电梯状态机，含卡住/逆行/快速开关三种恐怖异常状态）、
+            SanitySystem（理智值 100→0 的自然掉落 + 阈值触发 + 事件扣减 + 恢复机制）、
+            EventManager（11 个事件的触发条件检测与调度，含场景切换/按键次数/理智阈值/未操作时间等复合条件）。
+            为程序提供完整的 C# 接口定义（StartGame/CheckVictory/TriggerGameOver 等），
+            并编写了事件配置表 JSON 示例、理智值配置和电梯配置规范。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 三角洲行动分析 -->
+<div class="divider"><hr></div>
+<section class="section" id="delta">
+  <div class="section-header">
+    <h2>三角洲行动 · 深度拆解分析</h2>
+    <p>Extraction Shooter 品类分析 · 600+ 小时深度体验</p>
+  </div>
+
+  <div class="project">
+    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1a0a 0%, #2d2d15 40%, #1a1a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c8b87c;font-family:monospace;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;letter-spacing:0.15rem;">Δ</div>
+      <div style="font-size:0.85rem;opacity:0.5;">DELTA FORCE · 危险行动模式</div>
+    </div>
+    <div class="project-body">
+      <h3>三角洲行动（危险行动模式）深度体验和拆解分析报告</h3>
+      <p class="role">个人分析项目 · 600+ 小时游戏时长 · 最高段位 · 单账号资产破 10 亿</p>
+      <p class="desc">
+        基于对《三角洲行动》危险行动模式 600+ 小时的深度体验，从市场表现、核心玩法循环、
+        付费设计、用户口碑等维度进行的系统性拆解分析。通过沉浸式体验「搜刮—交战—撤离」
+        核心循环，结合第三方数据平台、玩家社区舆论、搜索引擎指数等多源数据，
+        产出的一份涵盖市场分析、玩法拆解与系统评估的完整策划视角分析报告。
+      </p>
+
+      <div class="tags">
+        <span class="tag">Extraction Shooter</span>
+        <span class="tag">品类分析</span>
+        <span class="tag">市场数据</span>
+        <span class="tag">付费设计</span>
+        <span class="tag">用户口碑</span>
+        <span class="tag">核心循环拆解</span>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-item"><div class="label">体验时长</div><div class="value">600+ 小时</div></div>
+        <div class="meta-item"><div class="label">数据维度</div><div class="value">下载量 / 收入 / 口碑 / 搜索</div></div>
+        <div class="meta-item"><div class="label">数据来源</div><div class="value">12+ 渠道交叉验证</div></div>
+        <div class="meta-item"><div class="label">核心洞察</div><div class="value">撤离心理模型 / 付费公平性</div></div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight-card">
+          <div class="hl-title">市场表现分析</div>
+          <div class="hl-content">
+            综合伽马数据、Sensor Tower、七麦数据、交银国际研报等 12+ 渠道数据，
+            分析了游戏自 2024 年 12 月登陆 Steam 以来的下载量走势（Steam 累计 1230 万次）、
+            收入表现（已成为腾讯收入第二高的手游，S6 赛季登顶 iOS 畅销总榜）、
+            搜索指数周期性波动规律，以及收入峰值与赛季更新的高度关联性。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">核心循环与付费设计洞察</div>
+          <div class="hl-content">
+            深度拆解「战前整备→进入战局→搜刮与任务→遭遇战斗→撤离判定」的核心循环，
+            提出「拉闸时间」概念——撤离等待期是玩家心理紧张度的最高节点，玩家并非为"获胜"买单，
+            而是为"高风险决策下的肾上腺素体验"付费。付费设计上，通过 700+ 元付费行为观察，
+            发现玩家愿意为'降低风险'而非'变强'付费，说明游戏在付费公平性与商业回报之间找到较优平衡点。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">用户口碑多维度分析</div>
+          <div class="hl-content">
+            综合 TapTap（5.2 分）、App Store（4.6 分）、Steam（褒贬不一）、抖音精选（8.2 分）
+            等多平台评分，区分正面口碑（画质/枪械手感/撤离机制/三端互通）与负面口碑
+            （外挂/匹配机制/2025 年 10 月「共享监狱」事件三天 50 万差评/平衡性争议），
+            并结合高价值玩家评论原文，判断口碑总体走势与信任修复窗口。
           </div>
         </div>
       </div>
@@ -332,7 +416,7 @@
         <p style="margin-top:1rem;">
           在 Elevator — Don't Touch 项目中担任主策划和制作人，从零搭建了完整的 11 事件系统、
           五阶段理智值模型，并协调程序（2人）、美术（2人）、音效（1人）三组同步推进，
-          产出 10 份规范化项目文档（策划案、事件策划、事件细节描述、事件配置表、程序分工 ×2、美术分工 ×2、音效分工 ×2）。
+          产出 11 份规范化项目文档（策划案、事件策划、事件细节描述、事件配置表、程序分工 ×2、美术分工 ×2、音效分工 ×2、核心系统架构）。
         </p>
         <p style="margin-top:0.5rem;">
           在 David the Helldiver 中担任全盘策划，独立完成白夜双循环玩法设计、40+ 单位系统、
@@ -346,6 +430,7 @@
           <li>数值设计：属性曲线、理智值/经济模型、伤害公式、难度平衡</li>
           <li>文档规范：策划案、事件配置表（Excel/JSON）、跨职能需求文档</li>
           <li>项目管理：里程碑规划、跨职能分工协调、Git 版本规范、每日站会</li>
+          <li>分析能力：品类深度拆解、市场数据分析、用户口碑研究</li>
           <li>引擎工具：Unity（熟练）、Excel（数值建模）</li>
           <li>方向偏好：PC / 主机 · 恐怖 / 动作 / 叙事驱动</li>
         </ul>
