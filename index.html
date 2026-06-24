@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>代立强 — 游戏策划作品集</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #ffffff;
+    --text: #1a1a1a;
+    --text-secondary: #5a5a5a;
+    --text-muted: #999;
+    --accent: #1a1a1a;
+    --border: #e5e5e5;
+    --tag-bg: #f3f3f3;
+    --tag-text: #555;
+    --highlight-bg: #f7f7f7;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(250,250,250,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+  }
+  nav .inner {
+    max-width: 1000px; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+    height: 56px; padding: 0 2rem;
+  }
+  nav .logo { font-size: 1rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  nav .links { display: flex; gap: 2rem; list-style: none; }
+  nav .links a { text-decoration: none; color: var(--text-secondary); font-size: 0.875rem; transition: color 0.2s; }
+  nav .links a:hover { color: var(--accent); }
+
+  .hero {
+    padding: 140px 2rem 80px; max-width: 1000px; margin: 0 auto;
+  }
+  .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.5rem; }
+  .hero .subtitle { font-size: 1.15rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 1.25rem; }
+  .hero .summary { max-width: 620px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; }
+
+  .section { max-width: 1000px; margin: 0 auto; padding: 0 2rem 80px; }
+  .section-header { margin-bottom: 2rem; }
+  .section-header h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+  .section-header p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.2rem; }
+  .divider { max-width: 1000px; margin: 0 auto; padding: 0 2rem 40px; }
+  .divider hr { border: none; border-top: 1px solid var(--border); }
+
+  .project {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    overflow: hidden; margin-bottom: 2rem;
+    transition: box-shadow 0.2s;
+  }
+  .project:hover { box-shadow: 0 2px 24px rgba(0,0,0,0.05); }
+  .project-hero {
+    width: 100%; height: 340px; object-fit: cover; display: block;
+    background: var(--highlight-bg);
+  }
+  .project-body { padding: 2rem; }
+  .project-body h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
+  .project-body > .role { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 1rem; }
+  .project-body > .desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.85; }
+
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+  .tag { padding: 0.2rem 0.7rem; background: var(--tag-bg); color: var(--tag-text); font-size: 0.78rem; border-radius: 5px; }
+
+  .meta-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.25rem; margin-bottom: 1.5rem; padding: 1.25rem;
+    background: var(--highlight-bg); border-radius: 8px;
+  }
+  .meta-item .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
+  .meta-item .value { font-size: 0.9rem; font-weight: 500; }
+
+  .highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.875rem; margin-bottom: 1.25rem; }
+  .highlight-card { padding: 1.25rem; border: 1px solid var(--border); border-radius: 8px; }
+  .highlight-card .hl-title { font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--accent); }
+  .highlight-card .hl-content { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75; }
+
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1.25rem 0; }
+  .gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; }
+  .gallery img:hover { opacity: 0.85; }
+
+  .demo-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.5rem; background: var(--accent); color: #fff;
+    text-decoration: none; border-radius: 8px; font-size: 0.875rem; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .demo-btn:hover { background: #444; }
+  .demo-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+  .about {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem;
+  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .about h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.875rem; color: var(--accent); }
+  .about p, .about li { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.85; }
+  .about ul { list-style: none; padding: 0; }
+  .about ul li::before { content: "— "; color: var(--text-muted); }
+
+  .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); z-index: 200; justify-content: center; align-items: center; cursor: pointer; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 6px; }
+
+  footer { max-width: 1000px; margin: 0 auto; padding: 2rem 2rem 3rem; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+
+  @media (max-width: 768px) {
+    .hero { padding: 120px 1.25rem 60px; }
+    .hero h1 { font-size: 2rem; }
+    .section { padding: 0 1.25rem 60px; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 0.75rem; }
+    nav .links { gap: 1.25rem; }
+    .project-hero { height: 220px; }
+    .project-body { padding: 1.5rem; }
+    .highlights { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="inner">
+    <a href="#" class="logo">代立强</a>
+    <ul class="links">
+      <li><a href="#elevator">Elevator</a></li>
+      <li><a href="#david">David the Helldiver</a></li>
+      <li><a href="#about">关于我</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>代立强</h1>
+  <p class="subtitle">游戏策划 · 系统 / 数值方向</p>
+  <p class="summary">
+    专注 PC & 主机平台的核心系统设计与数值框架搭建。拥有从零到一的完整项目经验，
+    涵盖主策划、制作人、全盘策划等多个角色。擅长事件系统架构、理智值/经济数值模型、
+    跨职能协作与规范化文档产出。
+  </p>
+</header>
+
+<!-- Elevator Project -->
+<div class="divider"><hr></div>
+<section class="section" id="elevator">
+  <div class="section-header">
+    <h2>Elevator — Don't Touch</h2>
+    <p>第一人称 3D 密室互动恐怖体验 · 主策划 & 制作人</p>
+  </div>
+
+  <div class="project">
+    <div style="width:100%;height:340px;background:linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 30%, #16213e 60%, #0a0a15 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#aaa;font-family:monospace;position:relative;overflow:hidden;">
+      <video src="assets/elevator_model.mp4" autoplay loop muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.6;"></video>
+      <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%, rgba(200,50,50,0.08) 0%, transparent 60%);"></div>
+      <div style="font-size:4rem;margin-bottom:0.75rem;letter-spacing:0.3rem;position:relative;z-index:1;">▣ ▤ ▥ ▦</div>
+      <div style="font-size:0.8rem;opacity:0.5;letter-spacing:0.15rem;position:relative;z-index:1;">ELEVATOR — DON'T PRESS THE BUTTON</div>
+      <div style="font-size:0.7rem;opacity:0.3;margin-top:0.5rem;position:relative;z-index:1;">电梯 · 梦核 · 微恐</div>
+    </div>
+    <div class="project-body">
+      <h3>别按那个键</h3>
+      <p class="role">主策划 & 制作人 · Unity · 开发周期 14-21 天 · 产出 10 份规范化项目文档</p>
+      <p class="desc">
+        一款以「禁忌诱惑」和「理智衰减」为核心的第一人称 3D 密室互动恐怖游戏。玩家被困于一座看似普通的电梯中，
+        随着按键行为逐步揭开隐藏在日常空间下的恐惧真相。融合梦核（Liminal Space）美学与日式怪谈叙事，
+        通过 11 个递进式事件系统驱动玩家从「好奇」走向「崩溃」。
+      </p>
+
+      <div class="tags">
+        <span class="tag">Unity 3D</span>
+        <span class="tag">第一人称密室</span>
+        <span class="tag">梦核美学</span>
+        <span class="tag">微恐体验</span>
+        <span class="tag">多结局</span>
+        <span class="tag">按键交互</span>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-item"><div class="label">项目角色</div><div class="value">主策划 + 制作人</div></div>
+        <div class="meta-item"><div class="label">产出文档</div><div class="value">10 份规范化文档</div></div>
+        <div class="meta-item"><div class="label">事件数量</div><div class="value">11 个递进式事件</div></div>
+        <div class="meta-item"><div class="label">团队规模</div><div class="value">程序 ×2 + 美术 ×2 + 音效 ×1</div></div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight-card">
+          <div class="hl-title">理智值系统设计</div>
+          <div class="hl-content">
+            从 100 到 0 的五阶段理智衰减模型（Phase 0→5），每阶段解锁不同事件池和视觉表现。
+            初始自然掉落速率 1.81 秒/点，事件扣减范围 -3 至 -20，阶段越高扣减越重。
+            理智值 ≤60 触发事件 07，≤50 触发事件 08，<60 且事件 04 已触发则进入事件 09 持续崩溃（每 3 秒再 -1）。
+            配置以 JSON 格式交付程序。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">事件系统架构</div>
+          <div class="hl-content">
+            设计了两级事件配置表（Excel）：一级事件表管理触发条件（场景切换/按键次数/理智阈值/未操作时间），
+            二级事件表管理细节表现（箱庭场景/NPC 行为/开关门/理智变化/结局分支）。
+            11 个事件覆盖完整叙事弧线：游戏开局 → B1 地下室 → 3F 假模特 → 6F 人偶入梯 → 13F 门外鬼手 →
+            8.5 层死亡陷阱 → 15F 按钮锁定 → 2F 血手印墙 → 理智崩溃 → 死亡 → 16F 恢复。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">跨职能制作管理</div>
+          <div class="hl-content">
+            制定 4 阶段里程碑计划（灰盒 → 美术集成 → 音效集成 → 打磨测试），总周期 14-21 天。
+            为程序 A（核心系统：GameManager/ElevatorController/SanitySystem/EventManager）、
+            程序 B（事件/UI/输入集成）、美术 A（电梯场景UI）、美术 B（角色道具）、
+            音效师（机械环境 + 语音事件）分别编写独立需求分工文档。
+            建立 Git 分支规范、JSON 配置表标准、每日站会制度和任务看板流程。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- David the Helldiver -->
+<div class="divider"><hr></div>
+<section class="section" id="david">
+  <div class="section-header">
+    <h2>David the Helldiver</h2>
+    <p>横版 2D 像素风水下动作采集 + 塔防 · 全盘策划</p>
+  </div>
+
+  <div class="project">
+    <img class="project-hero" src="assets/image-20260514165503444.png" alt="David the Helldiver 水下战斗" onerror="this.parentElement.querySelector('.project-hero-fallback').style.display='flex';this.style.display='none'">
+    <div style="display:none;width:100%;height:340px;background:linear-gradient(160deg,#0a1628 0%,#0d2137 40%,#132e4a 100%);align-items:center;justify-content:center;flex-direction:column;color:#7ab8d4;" class="project-hero-fallback">
+      <div style="font-size:3rem;margin-bottom:0.5rem;">🐟</div>
+      <div style="font-size:0.85rem;opacity:0.6;">DAVID THE HELLDIVER</div>
+    </div>
+    <div class="project-body">
+      <h3>David the Helldiver</h3>
+      <p class="role">全盘策划 · Unity 2D · 可玩 Demo 已发布</p>
+      <p class="desc">
+        融合《潜水员戴夫》水下探索资源循环与《绝地潜兵 2》战斗系统的横版 2D 像素风动作游戏。
+        玩家扮演被调离前线的绝地潜兵 David，白天深入海域采集资源、战斗收集样本，
+        夜晚指挥科研站抵御光能族进攻。完整的白夜双循环 + 战备呼叫系统 + 非线性碎片叙事，
+        40+ 种敌人单位，15 种武器，8 种资源类型，7 个升级设施。
+      </p>
+
+      <div class="tags">
+        <span class="tag">Unity 2D</span>
+        <span class="tag">横版动作</span>
+        <span class="tag">资源循环</span>
+        <span class="tag">塔防</span>
+        <span class="tag">像素风</span>
+        <span class="tag">可玩 Demo</span>
+        <span class="tag">水下探索</span>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-item"><div class="label">项目角色</div><div class="value">全盘策划</div></div>
+        <div class="meta-item"><div class="label">敌人种类</div><div class="value">40+ 敌人 + 60+ 中立</div></div>
+        <div class="meta-item"><div class="label">武器数量</div><div class="value">15 种（4 大类）</div></div>
+        <div class="meta-item"><div class="label">海域分层</div><div class="value">浅水 / 深水 / 超深</div></div>
+      </div>
+
+      <div class="gallery">
+        <img src="assets/image-20260514165503444.png" alt="水下战斗场景" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514164533833.png" alt="海底探索" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514171532221.png" alt="科研站" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514171543761.png" alt="夜晚塔防" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514171555663.png" alt="敌人遭遇" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514170002976.png" alt="武器系统" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514170012387.png" alt="资源采集" onclick="openLightbox(this.src)" loading="lazy">
+        <img src="assets/image-20260514172003020.png" alt="BOSS 战" onclick="openLightbox(this.src)" loading="lazy">
+      </div>
+
+      <div class="highlights">
+        <div class="highlight-card">
+          <div class="hl-title">白夜双循环设计</div>
+          <div class="hl-content">
+            白天水下探索（单人动作战斗 + 资源采集 + 任务系统）→ 返回科研站升级 → 夜晚塔防（阵地防御 + 战备呼叫 + 多波次敌人）→ 推进剧情。
+            未完成也可撤离，但无法获得关键奖励和推进剧情。双循环通过科研站串联，形成「探索→成长→验证→叙事推进」的完整闭环。
+            战备呼叫系统分为白天（个人武器：按住 Ctrl + 方向键组合呼叫）和夜晚（驱逐舰/阵地武器）两部分。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">数值框架设计</div>
+          <div class="hl-content">
+            核心属性：生命值 100 / 氧气 300（战斗时限，每秒 -1）/ 体力值（归零 5 秒后恢复）。
+            武器系统：主武器 ×4（步枪/霰弹/狙击/初始）+ 副武器 ×3（冲锋枪/自瞄手枪/核弹手枪）+
+            投掷武器 ×3（诱饵地雷/便携鱼雷/地狱火背包）+ 驱逐舰武器 ×2 + 阵地武器 ×3，每种独立冷却。
+            背包载重：初始 30kg，超重 30% 移速降至 80%，超重 30% 以上降至 50%。
+            深度惩罚：每降 1% 深度视野降 0.7%，可视范围外单位仅显示灰色模糊轮廓。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">单位系统与生态设计</div>
+          <div class="hl-content">
+            40+ 种敌人按海域分层分布（浅层→深层→超深层），含巡逻队刷新机制（1 中型 + 5-6 小型）+
+            1 分钟未攻击自动恢复至初始水平。60+ 种中立单位具备差异化行为：飞鱼群楔形队列移动、
+            海螺缩壳后伤害抗性 5 倍、跃鲸受击后 3 倍移速反击、人脸鱿鱼受击生成光能水泡。
+            8 种资源分属不同海域层级（样本/超级货币/植物/矿石/残骸/鱿鱼卵/710结晶/巨型卵），
+            驱动玩家探索纵深。
+          </div>
+        </div>
+      </div>
+
+      <a class="demo-btn" href="assets/DavidTheHelldiver_Demo.zip" download>
+        <span>⬇</span> 下载 Demo（Windows 可执行文件，约 117MB）
+      </a>
+      <p class="demo-note">Unity 打包 · 解压后运行 DavidTheHelldiver_Demo.exe 即可体验</p>
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<div class="divider"><hr></div>
+<section class="section" id="about">
+  <div class="section-header"><h2>关于我</h2></div>
+  <div class="about">
+    <div class="about-grid">
+      <div>
+        <h3>代立强</h3>
+        <p>游戏策划，专注于 PC & 主机平台的系统设计与数值策划。</p>
+        <p style="margin-top:1rem;">
+          在 Elevator — Don't Touch 项目中担任主策划和制作人，从零搭建了完整的 11 事件系统、
+          五阶段理智值模型，并协调程序（2人）、美术（2人）、音效（1人）三组同步推进，
+          产出 10 份规范化项目文档（策划案、事件策划、事件细节描述、事件配置表、程序分工 ×2、美术分工 ×2、音效分工 ×2）。
+        </p>
+        <p style="margin-top:0.5rem;">
+          在 David the Helldiver 中担任全盘策划，独立完成白夜双循环玩法设计、40+ 单位系统、
+          15 种武器数值框架和完整的资源→升级经济循环，并交付了可运行 Unity Demo。
+        </p>
+      </div>
+      <div>
+        <h3>核心能力</h3>
+        <ul>
+          <li>系统设计：事件系统、状态机架构、AI 行为逻辑、交互闭环</li>
+          <li>数值设计：属性曲线、理智值/经济模型、伤害公式、难度平衡</li>
+          <li>文档规范：策划案、事件配置表（Excel/JSON）、跨职能需求文档</li>
+          <li>项目管理：里程碑规划、跨职能分工协调、Git 版本规范、每日站会</li>
+          <li>引擎工具：Unity（熟练）、Excel（数值建模）</li>
+          <li>方向偏好：PC / 主机 · 恐怖 / 动作 / 叙事驱动</li>
+        </ul>
+        <h3 style="margin-top:1.5rem;">联系方式</h3>
+        <p>📱 15946301734</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2026 代立强 · 游戏策划作品集</p></footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
