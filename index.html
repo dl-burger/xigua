@@ -200,58 +200,52 @@
         <div class="highlight-card">
           <div class="hl-title">理智值系统设计</div>
           <div class="hl-content">
-            从 100 到 0 的五阶段理智衰减模型（Phase 0→5），每阶段解锁不同事件池和视觉表现。
-            初始自然掉落速率 1.81 秒/点，事件扣减范围 -3 至 -20，阶段越高扣减越重。
-            理智值 ≤60 触发事件 07，≤50 触发事件 08，<60 且事件 04 已触发则进入事件 09 持续崩溃（每 3 秒再 -1）。
-            配置以 JSON 格式交付程序。
+            从 100 到 0 的五阶段理智衰减模型，每阶段解锁不同事件池和视觉表现（白→黄→橙红→红灯光）。
+            初始自然掉落速率 1.81 秒/点，事件扣减范围 -3 至 -20。理智 ≤60 触发事件 07，≤50 触发事件 08，
+            <60 且事件 04 已触发则进入持续崩溃。设计目标是让玩家在"先好奇、后崩溃"的节奏中自然经历完整叙事弧线，
+            测试中首次死亡平均发生在第 7–9 个事件之间，符合预期。
           </div>
         </div>
         <div class="highlight-card">
           <div class="hl-title">事件系统架构</div>
           <div class="hl-content">
-            设计了两级事件配置表（Excel）：一级事件表管理触发条件（场景切换/按键次数/理智阈值/未操作时间），
-            二级事件表管理细节表现（箱庭场景/NPC 行为/开关门/理智变化/结局分支）。
-            11 个事件覆盖完整叙事弧线：游戏开局 → B1 地下室 → 3F 假模特 → 6F 人偶入梯 → 13F 门外鬼手 →
-            8.5 层死亡陷阱 → 15F 按钮锁定 → 2F 血手印墙 → 理智崩溃 → 死亡 → 16F 恢复。
+            两级事件配置表（Excel/JSON）：一级表管理触发条件（场景切换/按键次数/理智阈值/未操作时间/概率权重），
+            二级表管理细节表现（箱庭/NPC 行为/开关门/理智变化/结局分支/音效/字幕）。
+            11 个事件形成递进叙事：开局 → B1 人影 → 3F 假模特（3 次递进）→ 6F 人偶入梯 → 13F 鬼手 →
+            8.5 层死亡陷阱 → 15F 按钮锁定 → 2F 血手印 → 崩溃 → 16F 恢复。支持 4 种结局（正常/迷失/加入/死亡）。
           </div>
         </div>
         <div class="highlight-card">
           <div class="hl-title">跨职能制作管理</div>
           <div class="hl-content">
-            制定 4 阶段里程碑计划（灰盒 → 美术集成 → 音效集成 → 打磨测试），总周期 14-21 天。
-            为程序 A（核心系统：GameManager/ElevatorController/SanitySystem/EventManager）、
-            程序 B（事件/UI/输入集成）、美术 A（电梯场景UI）、美术 B（角色道具）、
-            音效师（机械环境 + 语音事件）分别编写独立需求分工文档。
-            建立 Git 分支规范、JSON 配置表标准、每日站会制度和任务看板流程。
+            制定 4 阶段里程碑计划（灰盒→美术集成→音效集成→打磨），总周期 14-21 天，8 个正式会议节点。
+            为 5 个职能岗位（程序A/B、美术A/B、音效）分别编写独立需求分工文档，建立 Git 分支规范、
+            JSON 配置表标准、每日站会制度和 TAPD 任务看板流程。统一了 9 份分散文档中的策划、事件、理智值矛盾，
+            产出 11 份规范化交付文档。
           </div>
         </div>
         <div class="highlight-card">
           <div class="hl-title">核心系统架构设计</div>
           <div class="hl-content">
-            设计了四个核心模块的完整架构：GameManager（全局状态机：主菜单→游戏中→胜利/死亡）、
-            ElevatorController（21 层电梯状态机，含卡住/逆行/快速开关三种恐怖异常状态）、
-            SanitySystem（理智值 100→0 的自然掉落 + 阈值触发 + 事件扣减 + 恢复机制）、
-            EventManager（11 个事件的触发条件检测与调度，含场景切换/按键次数/理智阈值/未操作时间等复合条件）。
-            为程序提供完整的 C# 接口定义（StartGame/CheckVictory/TriggerGameOver 等），
-            并编写了事件配置表 JSON 示例、理智值配置和电梯配置规范。
+            设计四个核心模块的完整状态机架构：GameManager（主菜单→游戏中→胜利/死亡）、
+            ElevatorController（21 层电梯，含卡住/逆行/快速开关三种恐怖异常状态）、
+            SanitySystem（自然掉落+阈值触发+事件扣减+16F 恢复）、
+            EventManager（11 事件触发检测与调度，支持复合条件）。为程序交付完整 C# 接口定义
+            及 JSON 配置示例，使程序团队在灰盒阶段即完成全部事件逻辑跑通。
           </div>
         </div>
       </div>
 
       <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--highlight-bg);border-radius:8px;">
-        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 查看原文：</span>
+        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 核心文档：</span>
         <span style="font-size:0.82rem;color:var(--text-secondary);">
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_gdd.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">策划案</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_event_plan.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">事件策划</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_event_detail.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">事件细节</a> ·
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_game_design.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">游戏设计文档</a> ·
           <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_event_table.xlsx" target="_blank" style="color:var(--accent);text-decoration:underline;">事件配置表</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_pm.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">项目管理</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_pm_v1.0.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">项目管理 v1.0</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_program_core.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">程序核心系统</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_program_event_ui_audio.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">程序事件UI</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_audio_mech_env.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">音效机械环境</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_audio_voice.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">音效语音事件</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_game_design.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">游戏设计文档</a>
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_pm_v1.0.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">项目管理文档</a> ·
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_program_core.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">核心系统架构</a>
+        </span>
+        <span style="font-size:0.78rem;color:var(--text-muted);margin-left:1rem;">
+          （共 11 份文档，此处展示 4 份核心文档。另有策划案、事件策划、事件细节、程序分工、美术分工、音效分工等 7 份过程文档可供面试时查阅）
         </span>
       </div>
     </div>
