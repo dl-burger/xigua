@@ -6,16 +6,24 @@
 <title>代立强 — 游戏策划作品集</title>
 <style>
   :root {
-    --bg: #fafafa;
+    --bg: #f9f7f4;
     --card: #ffffff;
-    --text: #1a1a1a;
-    --text-secondary: #5a5a5a;
-    --text-muted: #999;
-    --accent: #1a1a1a;
-    --border: #e5e5e5;
-    --tag-bg: #f3f3f3;
-    --tag-text: #555;
-    --highlight-bg: #f7f7f7;
+    --card-alt: #fdfbf7;
+    --text: #1e1b18;
+    --text-secondary: #5c554e;
+    --text-muted: #9b9489;
+    --accent: #b8753e;
+    --accent-dim: #d4a76a;
+    --accent-subtle: #f5ede0;
+    --border: #e8e2d8;
+    --border-hover: #d4c8b0;
+    --tag-bg: #f5f0e8;
+    --tag-text: #6b5e4e;
+    --highlight-bg: #faf7f0;
+    --shadow-sm: 0 1px 3px rgba(80,60,30,0.04);
+    --shadow-md: 0 4px 20px rgba(80,60,30,0.06);
+    --shadow-lg: 0 8px 40px rgba(80,60,30,0.08);
+    --gradient-hero: linear-gradient(175deg, #fdfaf5 0%, #f7f0e4 50%, #f9f4ea 100%);
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -25,13 +33,19 @@
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
   }
+  body::before {
+    content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5 Q35 15 30 25 Q25 15 30 5Z' fill='%23d4c8b0' fill-opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 60px 60px; pointer-events: none; z-index: -1;
+  }
 
   nav {
     position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(250,250,250,0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(249,247,244,0.94);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
+    box-shadow: 0 1px 8px rgba(80,60,30,0.03);
     z-index: 100;
   }
   nav .inner {
@@ -39,31 +53,62 @@
     display: flex; justify-content: space-between; align-items: center;
     height: 56px; padding: 0 2rem;
   }
-  nav .logo { font-size: 1rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+  nav .logo { font-size: 1rem; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: 0.02em; }
   nav .links { display: flex; gap: 2rem; list-style: none; }
   nav .links a { text-decoration: none; color: var(--text-secondary); font-size: 0.875rem; transition: color 0.2s; }
   nav .links a:hover { color: var(--accent); }
 
   .hero {
     padding: 140px 2rem 80px; max-width: 1000px; margin: 0 auto;
+    position: relative;
   }
-  .hero h1 { font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.5rem; }
-  .hero .subtitle { font-size: 1.15rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 1.25rem; }
-  .hero .summary { max-width: 620px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; }
+  .hero::after {
+    content: ""; position: absolute; bottom: 40px; right: 2rem;
+    width: 200px; height: 120px;
+    background: radial-gradient(ellipse at center, rgba(184,117,62,0.08) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero h1 {
+    font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #3d2b15 0%, #7a5530 60%, #b8753e 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-size: 1.15rem; color: var(--accent); font-weight: 500; margin-bottom: 1.25rem;
+    display: inline-block; padding: 0.2rem 0;
+    border-bottom: 2px solid var(--accent-subtle);
+  }
+  .hero .summary { max-width: 620px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.85; }
 
   .section { max-width: 1000px; margin: 0 auto; padding: 0 2rem 80px; }
   .section-header { margin-bottom: 2rem; }
-  .section-header h2 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
-  .section-header p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.2rem; }
+  .section-header h2 {
+    font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-header h2::before {
+    content: ""; display: inline-block; width: 4px; height: 1.3em;
+    background: var(--accent); border-radius: 2px;
+  }
+  .section-header p { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.2rem; margin-left: 1.25rem; }
   .divider { max-width: 1000px; margin: 0 auto; padding: 0 2rem 40px; }
-  .divider hr { border: none; border-top: 1px solid var(--border); }
+  .divider hr { border: none; border-top: 1px solid var(--border); position: relative; }
+  .divider hr::after {
+    content: "◆"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    font-size: 0.4rem; color: var(--accent-dim); background: var(--bg); padding: 0 0.75rem;
+  }
 
   .project {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px;
     overflow: hidden; margin-bottom: 2rem;
-    transition: box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.35s, transform 0.35s;
   }
-  .project:hover { box-shadow: 0 2px 24px rgba(0,0,0,0.05); }
+  .project:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
   .project-hero {
     width: 100%; height: 340px; object-fit: cover; display: block;
     background: var(--highlight-bg);
@@ -74,19 +119,39 @@
   .project-body > .desc { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.25rem; line-height: 1.85; }
 
   .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
-  .tag { padding: 0.2rem 0.7rem; background: var(--tag-bg); color: var(--tag-text); font-size: 0.78rem; border-radius: 5px; }
+  .tag {
+    padding: 0.25rem 0.75rem; background: var(--tag-bg); color: var(--tag-text);
+    font-size: 0.78rem; border-radius: 4px; border: 1px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .tag:hover { border-color: var(--accent-dim); background: var(--accent-subtle); }
 
   .meta-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.25rem; margin-bottom: 1.5rem; padding: 1.25rem;
-    background: var(--highlight-bg); border-radius: 8px;
+    gap: 1.25rem; margin-bottom: 1.5rem; padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, var(--highlight-bg) 0%, var(--card) 100%);
+    border-radius: 10px; border: 1px solid var(--border);
   }
-  .meta-item .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.2rem; }
-  .meta-item .value { font-size: 0.9rem; font-weight: 500; }
+  .meta-item { position: relative; }
+  .meta-item .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.25rem; }
+  .meta-item .value { font-size: 0.9rem; font-weight: 600; color: var(--text); }
 
   .highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.875rem; margin-bottom: 1.25rem; }
-  .highlight-card { padding: 1.25rem; border: 1px solid var(--border); border-radius: 8px; }
-  .highlight-card .hl-title { font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem; color: var(--accent); }
+  .highlight-card {
+    padding: 1.25rem; border: 1px solid var(--border); border-radius: 10px;
+    background: var(--card); transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .highlight-card:hover {
+    border-color: var(--accent-dim); box-shadow: var(--shadow-md);
+  }
+  .highlight-card .hl-title {
+    font-weight: 600; font-size: 0.875rem; margin-bottom: 0.5rem;
+    color: var(--accent); display: flex; align-items: center; gap: 0.4rem;
+  }
+  .highlight-card .hl-title::before {
+    content: ""; display: inline-block; width: 6px; height: 6px;
+    background: var(--accent-dim); border-radius: 50%;
+  }
   .highlight-card .hl-content { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75; }
 
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1.25rem 0; }
@@ -95,26 +160,28 @@
 
   .demo-btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.5rem; background: var(--accent); color: #fff;
+    padding: 0.65rem 1.6rem; background: var(--accent); color: #fff;
     text-decoration: none; border-radius: 8px; font-size: 0.875rem; font-weight: 500;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.15s; box-shadow: var(--shadow-sm);
   }
-  .demo-btn:hover { background: #444; }
+  .demo-btn:hover { background: #a06530; transform: translateY(-1px); box-shadow: var(--shadow-md); }
   .demo-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; }
 
   /* 高光游戏大卡 */
   .featured-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
   .featured-game {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem;
     position: relative; overflow: hidden;
+    box-shadow: var(--shadow-sm); transition: box-shadow 0.3s, transform 0.3s;
   }
+  .featured-game:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
   .featured-game .fg-badge {
     position: absolute; top: 0; right: 0;
-    background: var(--accent); color: #fff; font-size: 0.65rem; font-weight: 600;
-    padding: 0.2rem 0.75rem 0.25rem 1rem; border-radius: 0 12px 0 12px;
-    letter-spacing: 0.04em; text-transform: uppercase;
+    background: var(--accent); color: #fff; font-size: 0.62rem; font-weight: 600;
+    padding: 0.25rem 0.85rem 0.3rem 1.1rem; border-radius: 0 14px 0 14px;
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
-  .featured-game .fg-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .featured-game .fg-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--text); }
   .featured-game .fg-hours { font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
   .featured-game .fg-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
   .featured-game .fg-note { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
@@ -132,9 +199,9 @@
     background: var(--card); border: 1px solid var(--border); border-radius: 6px;
     padding: 0.45rem 0.85rem; font-size: 0.8rem;
     display: inline-flex; align-items: center; gap: 0.45rem;
-    transition: border-color 0.15s;
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .mini-game:hover { border-color: var(--accent); }
+  .mini-game:hover { border-color: var(--accent-dim); box-shadow: var(--shadow-sm); }
   .mini-game .mg-name { font-weight: 500; color: var(--text); }
   .mini-game .mg-hours { font-size: 0.7rem; color: var(--text-muted); }
   .mini-game .mg-note { font-size: 0.7rem; color: var(--text-muted); margin-left: 0.25rem; }
@@ -144,13 +211,16 @@
   .more-games .mg-body { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.85; }
 
   .about {
-    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem;
+    background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem;
+    box-shadow: var(--shadow-sm);
   }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
-  .about h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.875rem; color: var(--accent); }
+  .about h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.875rem; color: var(--text); }
   .about p, .about li { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.85; }
   .about ul { list-style: none; padding: 0; }
-  .about ul li::before { content: "— "; color: var(--text-muted); }
+  .about ul li { padding: 0.3rem 0; transition: transform 0.15s; }
+  .about ul li:hover { transform: translateX(4px); }
+  .about ul li::before { content: "— "; color: var(--accent-dim); }
 
   .lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.92); z-index: 200; justify-content: center; align-items: center; cursor: pointer; }
   .lightbox.active { display: flex; }
