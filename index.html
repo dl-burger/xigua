@@ -102,11 +102,46 @@
   .demo-btn:hover { background: #444; }
   .demo-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 0.5rem; }
 
-  .experience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
-  .experience-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; }
-  .experience-card .game-name { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.25rem; }
-  .experience-card .game-hours { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.35rem; }
-  .experience-card .game-note { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
+  /* 高光游戏大卡 */
+  .featured-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2rem; }
+  .featured-game {
+    background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem;
+    position: relative; overflow: hidden;
+  }
+  .featured-game .fg-badge {
+    position: absolute; top: 0; right: 0;
+    background: var(--accent); color: #fff; font-size: 0.65rem; font-weight: 600;
+    padding: 0.2rem 0.75rem 0.25rem 1rem; border-radius: 0 12px 0 12px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .featured-game .fg-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; }
+  .featured-game .fg-hours { font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
+  .featured-game .fg-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .featured-game .fg-note { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
+
+  /* 品类分组 */
+  .category-group { margin-bottom: 1.5rem; }
+  .category-group .cat-label {
+    font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-muted); margin-bottom: 0.75rem; padding-left: 0.15rem;
+  }
+  .category-group .cat-games {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+  }
+  .mini-game {
+    background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0.45rem 0.85rem; font-size: 0.8rem;
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    transition: border-color 0.15s;
+  }
+  .mini-game:hover { border-color: var(--accent); }
+  .mini-game .mg-name { font-weight: 500; color: var(--text); }
+  .mini-game .mg-hours { font-size: 0.7rem; color: var(--text-muted); }
+  .mini-game .mg-note { font-size: 0.7rem; color: var(--text-muted); margin-left: 0.25rem; }
+
+  .more-games { margin-top: 1.5rem; padding: 1.25rem; background: var(--highlight-bg); border-radius: 8px; }
+  .more-games .mg-title { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
+  .more-games .mg-body { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.85; }
 
   .about {
     background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem;
@@ -134,6 +169,7 @@
     .project-hero { height: 220px; }
     .project-body { padding: 1.5rem; }
     .highlights { grid-template-columns: 1fr; }
+    .featured-games { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -143,10 +179,10 @@
   <div class="inner">
     <a href="#" class="logo">代立强</a>
     <ul class="links">
-      <li><a href="#elevator">Elevator</a></li>
-      <li><a href="#delta">三角洲分析</a></li>
-      <li><a href="#david">David the Helldiver</a></li>
       <li><a href="#experience">游戏经历</a></li>
+      <li><a href="#delta">三角洲分析</a></li>
+      <li><a href="#david">David</a></li>
+      <li><a href="#elevator">Elevator</a></li>
       <li><a href="#about">关于我</a></li>
     </ul>
   </div>
@@ -162,94 +198,161 @@
   </p>
 </header>
 
-<!-- Elevator Project -->
+<!-- 游戏经历 -->
 <div class="divider"><hr></div>
-<section class="section" id="elevator">
+<section class="section" id="experience">
   <div class="section-header">
-    <h2>Elevator — Don't Touch</h2>
-    <p>第一人称 3D 密室互动恐怖体验 · 主策划 & 制作人</p>
+    <h2>游戏经历</h2>
+    <p>深度游玩 400+ 款游戏，覆盖 FPS / RPG / 动作 / 模拟经营 / 策略 / 恐怖等多品类</p>
+  </div>
+
+  <!-- 三款核心高光 -->
+  <div class="featured-games">
+    <div class="featured-game">
+      <div class="fg-badge">最高时长</div>
+      <div class="fg-name">英雄联盟</div>
+      <div class="fg-hours">3,000+ 小时</div>
+      <div class="fg-sub">S3 起至今 · MOBA</div>
+      <div class="fg-note">十余年 MOBA 深度玩家。对竞技平衡、赛季运营、英雄设计迭代有长期追踪。</div>
+    </div>
+    <div class="featured-game">
+      <div class="fg-badge">核心参考</div>
+      <div class="fg-name">三角洲行动</div>
+      <div class="fg-hours">600+ 小时</div>
+      <div class="fg-sub">最高段位 · 资产破 10 亿</div>
+      <div class="fg-note">主玩航天基地，深入体验付费设计、赛季运营、撤离心理模型。已产出完整品类分析报告。</div>
+    </div>
+    <div class="featured-game">
+      <div class="fg-badge">深度战术</div>
+      <div class="fg-name">Squad</div>
+      <div class="fg-hours">770 小时</div>
+      <div class="fg-sub">硬核战术射击</div>
+      <div class="fg-note">团队沟通、战场态势感知、兵种协同。对硬核 FPS 设计有深入理解。</div>
+    </div>
+  </div>
+
+  <!-- 按品类分组 -->
+  <div class="category-group">
+    <div class="cat-label">🎯 射击 / 战术竞技</div>
+    <div class="cat-games">
+      <span class="mini-game"><span class="mg-name">守望先锋</span><span class="mg-hours">600h</span></span>
+      <span class="mini-game"><span class="mg-name">CS:GO</span><span class="mg-hours">500h</span></span>
+      <span class="mini-game"><span class="mg-name">PUBG</span><span class="mg-hours">400h</span></span>
+      <span class="mini-game"><span class="mg-name">绝地潜兵 2</span><span class="mg-hours">200h</span><span class="mg-note">126级 · David 项目参考</span></span>
+      <span class="mini-game"><span class="mg-name">逃离塔科夫</span><span class="mg-hours">100h</span></span>
+      <span class="mini-game"><span class="mg-name">泰坦陨落 2</span><span class="mg-hours">50h</span></span>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="cat-label">⚔️ 动作 / 近战</div>
+    <div class="cat-games">
+      <span class="mini-game"><span class="mg-name">永劫无间</span><span class="mg-hours">400h</span></span>
+      <span class="mini-game"><span class="mg-name">只狼：影逝二度</span><span class="mg-hours">120h</span></span>
+      <span class="mini-game"><span class="mg-name">黑神话：悟空</span><span class="mg-hours">100h</span></span>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="cat-label">🧙 RPG / 开放世界</div>
+    <div class="cat-games">
+      <span class="mini-game"><span class="mg-name">天国：拯救 1/2</span><span class="mg-hours">300h</span></span>
+      <span class="mini-game"><span class="mg-name">博德之门 3</span><span class="mg-hours">150h</span></span>
+      <span class="mini-game"><span class="mg-name">赛博朋克 2077</span><span class="mg-hours">120h</span></span>
+      <span class="mini-game"><span class="mg-name">潜水员戴夫</span><span class="mg-hours">80h</span><span class="mg-note">David 项目核心参考</span></span>
+    </div>
+  </div>
+
+  <div class="category-group">
+    <div class="cat-label">🐾 回合制 / 模拟经营</div>
+    <div class="cat-games">
+      <span class="mini-game"><span class="mg-name">洛克王国</span><span class="mg-hours">300h</span></span>
+      <span class="mini-game"><span class="mg-name">城市：天际线</span><span class="mg-hours">200h</span></span>
+    </div>
+  </div>
+
+  <div class="more-games">
+    <div class="mg-title">📚 更多涉猎（400+ 款）</div>
+    <div class="mg-body">
+      含暗区突围、七日世界（内测起）、穿越火线（10 年）、寂静岭 / PT / SCP-087 等恐怖游戏、
+      以及各类独立游戏、3A 大作、竞技游戏，覆盖 FPS、RPG、动作、模拟经营、策略、恐怖等多品类。
+    </div>
+  </div>
+</section>
+
+<!-- 三角洲行动分析 -->
+<div class="divider"><hr></div>
+<section class="section" id="delta">
+  <div class="section-header">
+    <h2>三角洲行动 · 深度拆解分析</h2>
+    <p>Extraction Shooter 品类分析 · 600+ 小时深度体验</p>
   </div>
 
   <div class="project">
-    <div style="width:100%;height:340px;background:linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 30%, #16213e 60%, #0a0a15 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#aaa;font-family:monospace;position:relative;overflow:hidden;">
-      <video src="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_model.mp4" autoplay loop muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.6;"></video>
-      <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%, rgba(200,50,50,0.08) 0%, transparent 60%);"></div>
-      <div style="font-size:4rem;margin-bottom:0.75rem;letter-spacing:0.3rem;position:relative;z-index:1;">▣ ▤ ▥ ▦</div>
-      <div style="font-size:0.8rem;opacity:0.5;letter-spacing:0.15rem;position:relative;z-index:1;">ELEVATOR — DON'T PRESS THE BUTTON</div>
-      <div style="font-size:0.7rem;opacity:0.3;margin-top:0.5rem;position:relative;z-index:1;">电梯 · 梦核 · 微恐</div>
+    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1a0a 0%, #2d2d15 40%, #1a1a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c8b87c;font-family:monospace;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;letter-spacing:0.15rem;">Δ</div>
+      <div style="font-size:0.85rem;opacity:0.5;">DELTA FORCE · 危险行动模式</div>
     </div>
     <div class="project-body">
-      <h3>别按那个键</h3>
-      <p class="role">主策划 & 制作人 · Unity · 开发周期 14-21 天 · 产出 11 份规范化项目文档</p>
+      <h3>三角洲行动（危险行动模式）深度体验和拆解分析报告</h3>
+      <p class="role">个人分析项目 · 600+ 小时游戏时长 · 最高段位 · 单账号资产破 10 亿</p>
       <p class="desc">
-        一款以「禁忌诱惑」和「理智衰减」为核心的第一人称 3D 密室互动恐怖游戏。玩家被困于一座看似普通的电梯中，
-        随着按键行为逐步揭开隐藏在日常空间下的恐惧真相。融合梦核（Liminal Space）美学与日式怪谈叙事，
-        通过 11 个递进式事件系统驱动玩家从「好奇」走向「崩溃」。
+        基于对《三角洲行动》危险行动模式 600+ 小时的深度体验，从市场表现、核心玩法循环、
+        付费设计、用户口碑等维度进行的系统性拆解分析。通过沉浸式体验「搜刮—交战—撤离」
+        核心循环，结合第三方数据平台、玩家社区舆论、搜索引擎指数等多源数据，
+        产出的一份涵盖市场分析、玩法拆解与系统评估的完整策划视角分析报告。
       </p>
 
       <div class="tags">
-        <span class="tag">Unity 3D</span>
-        <span class="tag">第一人称密室</span>
-        <span class="tag">梦核美学</span>
-        <span class="tag">微恐体验</span>
-        <span class="tag">多结局</span>
-        <span class="tag">按键交互</span>
+        <span class="tag">Extraction Shooter</span>
+        <span class="tag">品类分析</span>
+        <span class="tag">市场数据</span>
+        <span class="tag">付费设计</span>
+        <span class="tag">用户口碑</span>
+        <span class="tag">核心循环拆解</span>
       </div>
 
       <div class="meta-grid">
-        <div class="meta-item"><div class="label">项目角色</div><div class="value">主策划 + 制作人</div></div>
-        <div class="meta-item"><div class="label">产出文档</div><div class="value">11 份规范化文档</div></div>
-        <div class="meta-item"><div class="label">事件数量</div><div class="value">11 个递进式事件</div></div>
-        <div class="meta-item"><div class="label">团队规模</div><div class="value">程序 ×2 + 美术 ×2 + 音效 ×1</div></div>
+        <div class="meta-item"><div class="label">体验时长</div><div class="value">600+ 小时</div></div>
+        <div class="meta-item"><div class="label">数据维度</div><div class="value">下载量 / 收入 / 口碑 / 搜索</div></div>
+        <div class="meta-item"><div class="label">数据来源</div><div class="value">12+ 渠道交叉验证</div></div>
+        <div class="meta-item"><div class="label">核心洞察</div><div class="value">撤离心理模型 / 付费公平性</div></div>
       </div>
 
       <div class="highlights">
         <div class="highlight-card">
-          <div class="hl-title">理智值系统设计</div>
+          <div class="hl-title">市场表现分析</div>
           <div class="hl-content">
-            从 100 到 0 的五阶段理智衰减模型，每阶段解锁不同事件池和视觉表现（白→黄→橙红→红灯光）。
-            初始自然掉落速率 1.81 秒/点，事件扣减范围 -3 至 -20。理智 ≤60 触发事件 07，≤50 触发事件 08，
-            <60 且事件 04 已触发则进入持续崩溃。设计目标是让玩家在"先好奇、后崩溃"的节奏中自然经历完整叙事弧线，
-            测试中首次死亡平均发生在第 7–9 个事件之间，符合预期。
+            综合伽马数据、Sensor Tower、七麦数据、交银国际研报等 12+ 渠道数据，
+            分析了游戏自 2024 年 12 月登陆 Steam 以来的下载量走势（Steam 累计 1230 万次）、
+            收入表现（已成为腾讯收入第二高的手游，S6 赛季登顶 iOS 畅销总榜）、
+            搜索指数周期性波动规律，以及收入峰值与赛季更新的高度关联性。
           </div>
         </div>
         <div class="highlight-card">
-          <div class="hl-title">事件系统架构</div>
+          <div class="hl-title">核心循环与付费设计洞察</div>
           <div class="hl-content">
-            两级事件配置表（Excel/JSON）：一级表管理触发条件（场景切换/按键次数/理智阈值/未操作时间/概率权重），
-            二级表管理细节表现（箱庭/NPC 行为/开关门/理智变化/结局分支/音效/字幕）。
-            11 个事件形成递进叙事：开局 → B1 人影 → 3F 假模特（3 次递进）→ 6F 人偶入梯 → 13F 鬼手 →
-            8.5 层死亡陷阱 → 15F 按钮锁定 → 2F 血手印 → 崩溃 → 16F 恢复。支持 4 种结局（正常/迷失/加入/死亡）。
+            深度拆解「战前整备→进入战局→搜刮与任务→遭遇战斗→撤离判定」的核心循环，
+            提出「拉闸时间」概念——撤离等待期是玩家心理紧张度的最高节点，玩家并非为"获胜"买单，
+            而是为"高风险决策下的肾上腺素体验"付费。付费设计上，通过 700+ 元付费行为观察，
+            发现玩家愿意为'降低风险'而非'变强'付费，说明游戏在付费公平性与商业回报之间找到较优平衡点。
           </div>
         </div>
         <div class="highlight-card">
-          <div class="hl-title">跨职能制作管理</div>
+          <div class="hl-title">用户口碑多维度分析</div>
           <div class="hl-content">
-            制定 4 阶段里程碑计划（灰盒→美术集成→音效集成→打磨），总周期 14-21 天，8 个正式会议节点。
-            为 5 个职能岗位（程序A/B、美术A/B、音效）分别编写独立需求分工文档，建立 Git 分支规范、
-            JSON 配置表标准、每日站会制度和 TAPD 任务看板流程。统一了 9 份分散文档中的策划、事件、理智值矛盾，
-            产出 11 份规范化交付文档。
-          </div>
-        </div>
-        <div class="highlight-card">
-          <div class="hl-title">核心系统架构设计</div>
-          <div class="hl-content">
-            设计四个核心模块的完整状态机架构：GameManager（主菜单→游戏中→胜利/死亡）、
-            ElevatorController（21 层电梯，含卡住/逆行/快速开关三种恐怖异常状态）、
-            SanitySystem（自然掉落+阈值触发+事件扣减+16F 恢复）、
-            EventManager（11 事件触发检测与调度，支持复合条件）。为程序交付完整 C# 接口定义
-            及 JSON 配置示例，使程序团队在灰盒阶段即完成全部事件逻辑跑通。
+            综合 TapTap（5.2 分）、App Store（4.6 分）、Steam（褒贬不一）、抖音精选（8.2 分）
+            等多平台评分，区分正面口碑（画质/枪械手感/撤离机制/三端互通）与负面口碑
+            （外挂/匹配机制/2025 年 10 月「共享监狱」事件三天 50 万差评/平衡性争议），
+            并结合高价值玩家评论原文，判断口碑总体走势与信任修复窗口。
           </div>
         </div>
       </div>
 
       <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--highlight-bg);border-radius:8px;">
-        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 核心文档：</span>
+        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 查看原文：</span>
         <span style="font-size:0.82rem;color:var(--text-secondary);">
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_gdd_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">游戏设计总纲</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_pm_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">项目管理文档</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_art_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">美术需求文档</a> ·
-          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_audio_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">音效需求文档</a>
+          <a href="delta-report.html" target="_blank" style="color:var(--accent);text-decoration:underline;">完整拆解分析报告</a>
         </span>
       </div>
     </div>
@@ -354,184 +457,96 @@
   </div>
 </section>
 
-<!-- 三角洲行动分析 -->
+<!-- Elevator Project -->
 <div class="divider"><hr></div>
-<section class="section" id="delta">
+<section class="section" id="elevator">
   <div class="section-header">
-    <h2>三角洲行动 · 深度拆解分析</h2>
-    <p>Extraction Shooter 品类分析 · 600+ 小时深度体验</p>
+    <h2>Elevator — Don't Touch</h2>
+    <p>第一人称 3D 密室互动恐怖体验 · 主策划 & 制作人</p>
   </div>
 
   <div class="project">
-    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1a0a 0%, #2d2d15 40%, #1a1a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c8b87c;font-family:monospace;">
-      <div style="font-size:2.5rem;margin-bottom:0.5rem;letter-spacing:0.15rem;">Δ</div>
-      <div style="font-size:0.85rem;opacity:0.5;">DELTA FORCE · 危险行动模式</div>
+    <div style="width:100%;height:340px;background:linear-gradient(160deg, #0f0f1a 0%, #1a1a2e 30%, #16213e 60%, #0a0a15 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#aaa;font-family:monospace;position:relative;overflow:hidden;">
+      <video src="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_model.mp4" autoplay loop muted playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:0.6;"></video>
+      <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 30%, rgba(200,50,50,0.08) 0%, transparent 60%);"></div>
+      <div style="font-size:4rem;margin-bottom:0.75rem;letter-spacing:0.3rem;position:relative;z-index:1;">▣ ▤ ▥ ▦</div>
+      <div style="font-size:0.8rem;opacity:0.5;letter-spacing:0.15rem;position:relative;z-index:1;">ELEVATOR — DON'T PRESS THE BUTTON</div>
+      <div style="font-size:0.7rem;opacity:0.3;margin-top:0.5rem;position:relative;z-index:1;">电梯 · 梦核 · 微恐</div>
     </div>
     <div class="project-body">
-      <h3>三角洲行动（危险行动模式）深度体验和拆解分析报告</h3>
-      <p class="role">个人分析项目 · 600+ 小时游戏时长 · 最高段位 · 单账号资产破 10 亿</p>
+      <h3>别按那个键</h3>
+      <p class="role">主策划 & 制作人 · Unity · 开发周期 14-21 天 · 产出 11 份规范化项目文档</p>
       <p class="desc">
-        基于对《三角洲行动》危险行动模式 600+ 小时的深度体验，从市场表现、核心玩法循环、
-        付费设计、用户口碑等维度进行的系统性拆解分析。通过沉浸式体验「搜刮—交战—撤离」
-        核心循环，结合第三方数据平台、玩家社区舆论、搜索引擎指数等多源数据，
-        产出的一份涵盖市场分析、玩法拆解与系统评估的完整策划视角分析报告。
+        一款以「禁忌诱惑」和「理智衰减」为核心的第一人称 3D 密室互动恐怖游戏。玩家被困于一座看似普通的电梯中，
+        随着按键行为逐步揭开隐藏在日常空间下的恐惧真相。融合梦核（Liminal Space）美学与日式怪谈叙事，
+        通过 11 个递进式事件系统驱动玩家从「好奇」走向「崩溃」。
       </p>
 
       <div class="tags">
-        <span class="tag">Extraction Shooter</span>
-        <span class="tag">品类分析</span>
-        <span class="tag">市场数据</span>
-        <span class="tag">付费设计</span>
-        <span class="tag">用户口碑</span>
-        <span class="tag">核心循环拆解</span>
+        <span class="tag">Unity 3D</span>
+        <span class="tag">第一人称密室</span>
+        <span class="tag">梦核美学</span>
+        <span class="tag">微恐体验</span>
+        <span class="tag">多结局</span>
+        <span class="tag">按键交互</span>
       </div>
 
       <div class="meta-grid">
-        <div class="meta-item"><div class="label">体验时长</div><div class="value">600+ 小时</div></div>
-        <div class="meta-item"><div class="label">数据维度</div><div class="value">下载量 / 收入 / 口碑 / 搜索</div></div>
-        <div class="meta-item"><div class="label">数据来源</div><div class="value">12+ 渠道交叉验证</div></div>
-        <div class="meta-item"><div class="label">核心洞察</div><div class="value">撤离心理模型 / 付费公平性</div></div>
+        <div class="meta-item"><div class="label">项目角色</div><div class="value">主策划 + 制作人</div></div>
+        <div class="meta-item"><div class="label">产出文档</div><div class="value">11 份规范化文档</div></div>
+        <div class="meta-item"><div class="label">事件数量</div><div class="value">11 个递进式事件</div></div>
+        <div class="meta-item"><div class="label">团队规模</div><div class="value">程序 ×2 + 美术 ×2 + 音效 ×1</div></div>
       </div>
 
       <div class="highlights">
         <div class="highlight-card">
-          <div class="hl-title">市场表现分析</div>
+          <div class="hl-title">理智值系统设计</div>
           <div class="hl-content">
-            综合伽马数据、Sensor Tower、七麦数据、交银国际研报等 12+ 渠道数据，
-            分析了游戏自 2024 年 12 月登陆 Steam 以来的下载量走势（Steam 累计 1230 万次）、
-            收入表现（已成为腾讯收入第二高的手游，S6 赛季登顶 iOS 畅销总榜）、
-            搜索指数周期性波动规律，以及收入峰值与赛季更新的高度关联性。
+            从 100 到 0 的五阶段理智衰减模型，每阶段解锁不同事件池和视觉表现（白→黄→橙红→红灯光）。
+            初始自然掉落速率 1.81 秒/点，事件扣减范围 -3 至 -20。理智 ≤60 触发事件 07，≤50 触发事件 08，
+            <60 且事件 04 已触发则进入持续崩溃。设计目标是让玩家在"先好奇、后崩溃"的节奏中自然经历完整叙事弧线，
+            测试中首次死亡平均发生在第 7–9 个事件之间，符合预期。
           </div>
         </div>
         <div class="highlight-card">
-          <div class="hl-title">核心循环与付费设计洞察</div>
+          <div class="hl-title">事件系统架构</div>
           <div class="hl-content">
-            深度拆解「战前整备→进入战局→搜刮与任务→遭遇战斗→撤离判定」的核心循环，
-            提出「拉闸时间」概念——撤离等待期是玩家心理紧张度的最高节点，玩家并非为"获胜"买单，
-            而是为"高风险决策下的肾上腺素体验"付费。付费设计上，通过 700+ 元付费行为观察，
-            发现玩家愿意为'降低风险'而非'变强'付费，说明游戏在付费公平性与商业回报之间找到较优平衡点。
+            两级事件配置表（Excel/JSON）：一级表管理触发条件（场景切换/按键次数/理智阈值/未操作时间/概率权重），
+            二级表管理细节表现（箱庭/NPC 行为/开关门/理智变化/结局分支/音效/字幕）。
+            11 个事件形成递进叙事：开局 → B1 人影 → 3F 假模特（3 次递进）→ 6F 人偶入梯 → 13F 鬼手 →
+            8.5 层死亡陷阱 → 15F 按钮锁定 → 2F 血手印 → 崩溃 → 16F 恢复。支持 4 种结局（正常/迷失/加入/死亡）。
           </div>
         </div>
         <div class="highlight-card">
-          <div class="hl-title">用户口碑多维度分析</div>
+          <div class="hl-title">跨职能制作管理</div>
           <div class="hl-content">
-            综合 TapTap（5.2 分）、App Store（4.6 分）、Steam（褒贬不一）、抖音精选（8.2 分）
-            等多平台评分，区分正面口碑（画质/枪械手感/撤离机制/三端互通）与负面口碑
-            （外挂/匹配机制/2025 年 10 月「共享监狱」事件三天 50 万差评/平衡性争议），
-            并结合高价值玩家评论原文，判断口碑总体走势与信任修复窗口。
+            制定 4 阶段里程碑计划（灰盒→美术集成→音效集成→打磨），总周期 14-21 天，8 个正式会议节点。
+            为 5 个职能岗位（程序A/B、美术A/B、音效）分别编写独立需求分工文档，建立 Git 分支规范、
+            JSON 配置表标准、每日站会制度和 TAPD 任务看板流程。统一了 9 份分散文档中的策划、事件、理智值矛盾，
+            产出 11 份规范化交付文档。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">核心系统架构设计</div>
+          <div class="hl-content">
+            设计四个核心模块的完整状态机架构：GameManager（主菜单→游戏中→胜利/死亡）、
+            ElevatorController（21 层电梯，含卡住/逆行/快速开关三种恐怖异常状态）、
+            SanitySystem（自然掉落+阈值触发+事件扣减+16F 恢复）、
+            EventManager（11 事件触发检测与调度，支持复合条件）。为程序交付完整 C# 接口定义
+            及 JSON 配置示例，使程序团队在灰盒阶段即完成全部事件逻辑跑通。
           </div>
         </div>
       </div>
 
       <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--highlight-bg);border-radius:8px;">
-        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 查看原文：</span>
+        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 核心文档：</span>
         <span style="font-size:0.82rem;color:var(--text-secondary);">
-          <a href="delta-report.html" target="_blank" style="color:var(--accent);text-decoration:underline;">完整拆解分析报告</a>
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_gdd_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">游戏设计总纲</a> ·
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_pm_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">项目管理文档</a> ·
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_art_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">美术需求文档</a> ·
+          <a href="https://github.com/dl-burger/xigua/releases/download/v1.0/elevator_audio_master.docx" target="_blank" style="color:var(--accent);text-decoration:underline;">音效需求文档</a>
         </span>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 游戏经历 -->
-<div class="divider"><hr></div>
-<section class="section" id="experience">
-  <div class="section-header"><h2>游戏经历</h2></div>
-  <div class="experience-grid">
-    <div class="experience-card">
-      <div class="game-name">三角洲行动</div>
-      <div class="game-hours">600+ 小时 · 最高段位 · 单账号资产破 10 亿</div>
-      <div class="game-note">主玩航天基地，长期沉浸"搜刮—交战—撤离"核心循环。深入体验付费设计、赛季运营、撤离心理模型。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">英雄联盟</div>
-      <div class="game-hours">3000+ 小时 · S3 起至今</div>
-      <div class="game-note">十余年 MOBA 深度玩家。对竞技平衡、赛季运营、英雄设计迭代有长期追踪。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">Squad</div>
-      <div class="game-hours">770 小时</div>
-      <div class="game-note">硬核战术射击。对团队沟通、战场态势感知、兵种协同有深入理解。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">守望先锋</div>
-      <div class="game-hours">600 小时</div>
-      <div class="game-note">英雄射击品类。研究角色差异化设计、团队配合、地图设计。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">CS:GO</div>
-      <div class="game-hours">500 小时</div>
-      <div class="game-note">经典竞技 FPS。对枪械手感、经济系统、地图平衡有深度认知。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">PUBG</div>
-      <div class="game-hours">400 小时</div>
-      <div class="game-note">战术竞技品类开创者。研究大地图设计、缩圈节奏、资源分布。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">永劫无间</div>
-      <div class="game-hours">400 小时</div>
-      <div class="game-note">近战竞技 + 吃鸡融合。对动作系统、技能设计、冷兵器手感有深入体验。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">天国：拯救 1/2</div>
-      <div class="game-hours">300+ 小时</div>
-      <div class="game-note">写实 RPG 标杆。研究拟真系统设计、技能成长曲线、开放世界叙事。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">洛克王国</div>
-      <div class="game-hours">300+ 小时</div>
-      <div class="game-note">回合制 RPG。对宠物养成系统、属性克制、PVE/PVP 平衡有深入理解。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">绝地潜兵 2</div>
-      <div class="game-hours">200+ 小时 · 126 级</div>
-      <div class="game-note">战备呼叫系统与友军伤害机制的核心参考。David 项目的战斗设计灵感来源。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">城市：天际线</div>
-      <div class="game-hours">200+ 小时</div>
-      <div class="game-note">模拟经营类。研究系统复杂度管理、资源流转、玩家自主目标设定。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">博德之门 3</div>
-      <div class="game-hours">150+ 小时</div>
-      <div class="game-note">CRPG 里程碑。研究叙事分支设计、骰子系统、自由度与后果设计。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">赛博朋克 2077</div>
-      <div class="game-hours">120 小时</div>
-      <div class="game-note">开放世界 RPG。研究义体系统、流派 build、任务网设计。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">只狼：影逝二度</div>
-      <div class="game-hours">120 小时</div>
-      <div class="game-note">动作游戏设计巅峰。研究拼刀机制、架势条系统、Boss 战节奏设计。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">黑神话：悟空</div>
-      <div class="game-hours">100+ 小时</div>
-      <div class="game-note">国产 3A 动作标杆。研究 Boss 战设计、变身系统、关卡探索节奏。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">逃离塔科夫</div>
-      <div class="game-hours">100+ 小时</div>
-      <div class="game-note">Extraction Shooter 品类源头。研究硬核枪械改装、保险箱机制、经济系统设计。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">潜水员戴夫</div>
-      <div class="game-hours">80+ 小时</div>
-      <div class="game-note">白夜双循环与资源升级系统的核心参考。深度体验探索→采集→经营→叙事推进的闭环。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">泰坦陨落 2</div>
-      <div class="game-hours">50 小时</div>
-      <div class="game-note">FPS 关卡设计教科书。研究时空穿梭、人机协同、节奏控制。</div>
-    </div>
-    <div class="experience-card">
-      <div class="game-name">更多</div>
-      <div class="game-hours">400+ 款游戏</div>
-      <div class="game-note">含暗区突围、七日世界（内测起）、穿越火线（10年）、寂静岭/PT/SCP-087 等恐怖游戏、以及各类独立游戏、3A 大作、竞技游戏，覆盖 FPS、RPG、动作、模拟经营、策略、恐怖等多品类。</div>
     </div>
   </div>
 </section>
