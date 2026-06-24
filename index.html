@@ -60,26 +60,37 @@
 
   .hero {
     padding: 140px 2rem 80px; max-width: 1000px; margin: 0 auto;
-    position: relative;
+    position: relative; overflow: hidden;
   }
-  .hero::after {
-    content: ""; position: absolute; bottom: 40px; right: 2rem;
-    width: 200px; height: 120px;
-    background: radial-gradient(ellipse at center, rgba(184,117,62,0.08) 0%, transparent 70%);
+  .hero::before {
+    content: ""; position: absolute; top: 60px; left: -120px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle at 50% 50%, rgba(184,117,62,0.12) 0%, rgba(212,167,106,0.06) 30%, transparent 70%);
     border-radius: 50%; pointer-events: none;
   }
+  .hero::after {
+    content: ""; position: absolute; bottom: 20px; right: -80px;
+    width: 350px; height: 250px;
+    background: radial-gradient(ellipse at center, rgba(212,167,106,0.1) 0%, transparent 65%);
+    border-radius: 50%; pointer-events: none;
+  }
+  .hero-decoration {
+    position: absolute; top: 100px; right: 3rem;
+    width: 80px; height: 80px; opacity: 0.12; pointer-events: none;
+  }
+  .hero-decoration svg { width: 100%; height: 100%; }
   .hero h1 {
     font-size: 2.6rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; margin-bottom: 0.5rem;
     background: linear-gradient(135deg, #3d2b15 0%, #7a5530 60%, #b8753e 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
+    background-clip: text; position: relative; z-index: 1;
   }
   .hero .subtitle {
     font-size: 1.15rem; color: var(--accent); font-weight: 500; margin-bottom: 1.25rem;
-    display: inline-block; padding: 0.2rem 0;
+    display: inline-block; padding: 0.2rem 0; position: relative; z-index: 1;
     border-bottom: 2px solid var(--accent-subtle);
   }
-  .hero .summary { max-width: 620px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.85; }
+  .hero .summary { max-width: 620px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.85; position: relative; z-index: 1; }
 
   .section { max-width: 1000px; margin: 0 auto; padding: 0 2rem 80px; }
   .section-header { margin-bottom: 2rem; }
@@ -95,8 +106,9 @@
   .divider { max-width: 1000px; margin: 0 auto; padding: 0 2rem 40px; }
   .divider hr { border: none; border-top: 1px solid var(--border); position: relative; }
   .divider hr::after {
-    content: "◆"; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
-    font-size: 0.4rem; color: var(--accent-dim); background: var(--bg); padding: 0 0.75rem;
+    content: ""; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 6px; height: 6px; background: var(--accent-dim); border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--accent-dim);
   }
 
   .project {
@@ -111,7 +123,12 @@
   }
   .project-hero {
     width: 100%; height: 340px; object-fit: cover; display: block;
-    background: var(--highlight-bg);
+    background: var(--highlight-bg); position: relative;
+  }
+  .project-hero::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to top, rgba(255,255,255,0.3) 0%, transparent 100%);
+    pointer-events: none;
   }
   .project-body { padding: 2rem; }
   .project-body h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.25rem; }
@@ -155,8 +172,8 @@
   .highlight-card .hl-content { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.75; }
 
   .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin: 1.25rem 0; }
-  .gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 6px; cursor: pointer; transition: opacity 0.2s; }
-  .gallery img:hover { opacity: 0.85; }
+  .gallery img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px; cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; }
+  .gallery img:hover { transform: scale(1.03); box-shadow: var(--shadow-md); }
 
   .demo-btn {
     display: inline-flex; align-items: center; gap: 0.5rem;
@@ -189,8 +206,12 @@
   /* 品类分组 */
   .category-group { margin-bottom: 1.5rem; }
   .category-group .cat-label {
-    font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-muted); margin-bottom: 0.75rem; padding-left: 0.15rem;
+    font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); margin-bottom: 0.75rem; padding-left: 0.15rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .category-group .cat-label::after {
+    content: ""; flex: 1; height: 1px; background: var(--border); margin-left: 0.5rem;
   }
   .category-group .cat-games {
     display: flex; flex-wrap: wrap; gap: 0.5rem;
@@ -206,13 +227,24 @@
   .mini-game .mg-hours { font-size: 0.7rem; color: var(--text-muted); }
   .mini-game .mg-note { font-size: 0.7rem; color: var(--text-muted); margin-left: 0.25rem; }
 
-  .more-games { margin-top: 1.5rem; padding: 1.25rem; background: var(--highlight-bg); border-radius: 8px; }
+  .more-games {
+    margin-top: 1.5rem; padding: 1.25rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent-subtle) 0%, var(--highlight-bg) 100%);
+    border-radius: 10px; border: 1px solid var(--border);
+  }
   .more-games .mg-title { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
   .more-games .mg-body { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.85; }
 
   .about {
     background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 2.5rem;
     box-shadow: var(--shadow-sm);
+    position: relative; overflow: hidden;
+  }
+  .about::before {
+    content: ""; position: absolute; top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, rgba(184,117,62,0.06) 0%, transparent 70%);
+    border-radius: 50%; pointer-events: none;
   }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
   .about h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.875rem; color: var(--text); }
@@ -259,6 +291,14 @@
 </nav>
 
 <header class="hero">
+  <div class="hero-decoration">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="28" height="28" rx="3" fill="none" stroke="#b8753e" stroke-width="2"/>
+      <rect x="44" y="8" width="28" height="28" rx="3" fill="none" stroke="#b8753e" stroke-width="2"/>
+      <rect x="8" y="44" width="28" height="28" rx="3" fill="#b8753e" opacity="0.3"/>
+      <rect x="44" y="44" width="28" height="28" rx="3" fill="#b8753e" opacity="0.6"/>
+    </svg>
+  </div>
   <h1>代立强</h1>
   <p class="subtitle">游戏策划 · 系统 / 数值 / 玩法方向</p>
   <p class="summary">
@@ -654,6 +694,8 @@
         </ul>
         <h3 style="margin-top:1.5rem;">联系方式</h3>
         <p>📱 15946301734</p>
+        <p>📧 m15946301734@163.com</p>
+        <p>💬 微信：dlon-2v</p>
       </div>
     </div>
   </div>
