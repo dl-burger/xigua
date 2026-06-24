@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David the Helldiver 设计文档 — 代立强</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --card: #fff;
+    --text: #1a1a1a;
+    --text-secondary: #555;
+    --text-muted: #999;
+    --accent: #1a1a1a;
+    --border: #e5e5e5;
+    --tag-bg: #f3f3f3;
+    --highlight: #f7f7f7;
+    --red: #c0392b;
+    --green: #27ae60;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+  .back { display:inline-block; padding:0.5rem 1rem; color:var(--text-secondary); text-decoration:none; font-size:0.85rem; margin:1rem 0 0 1rem; }
+  .back:hover { color:var(--accent); }
+
+  .container { max-width:860px; margin:0 auto; padding:2rem 2rem 6rem; }
+
+  h1 { font-size:2rem; font-weight:700; letter-spacing:-0.03em; line-height:1.3; margin-bottom:0.5rem; }
+
+  h2 {
+    font-size:1.35rem; font-weight:600; margin:3rem 0 1rem;
+    padding-bottom:0.5rem; border-bottom:2px solid var(--accent);
+  }
+  h3 { font-size:1.1rem; font-weight:600; margin:2rem 0 0.75rem; color:var(--accent); }
+  h4 { font-size:0.95rem; font-weight:600; margin:1.5rem 0 0.5rem; }
+
+  p { margin-bottom:0.875rem; color:var(--text-secondary); }
+
+  ul, ol { padding-left:1.5rem; margin-bottom:1rem; color:var(--text-secondary); }
+  li { margin-bottom:0.35rem; }
+
+  blockquote {
+    border-left:3px solid var(--border); padding:0.5rem 1rem; margin:1rem 0;
+    color:var(--text-muted); font-style:italic;
+  }
+  blockquote cite { display:block; margin-top:0.25rem; font-size:0.8rem; font-style:normal; }
+
+  table {
+    width:100%; border-collapse:collapse; margin:1.25rem 0; font-size:0.88rem;
+  }
+  th, td {
+    border:1px solid var(--border); padding:0.65rem 0.875rem; text-align:left;
+  }
+  th { background:var(--highlight); font-weight:600; }
+  td { color:var(--text-secondary); }
+  tr:hover td { background:#fafafa; }
+
+  .pro { color:var(--green); }
+  .con { color:var(--red); }
+
+  .two-col { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0; }
+  .col-box { padding:1.25rem; border-radius:8px; }
+  .col-box.good { background:#f0faf3; }
+  .col-box.bad { background:#fef5f5; }
+  .col-box h4 { margin-top:0; }
+
+  .doc-img {
+    display:block; max-width:100%; margin:1.25rem auto; border:1px solid var(--border);
+    border-radius:8px;
+  }
+
+  .section-label {
+    display:inline-block; background:var(--accent); color:#fff; padding:0.15rem 0.6rem;
+    border-radius:4px; font-size:0.7rem; font-weight:600; letter-spacing:0.04em;
+    margin-bottom:0.5rem;
+  }
+
+  .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; margin:1.25rem 0; }
+  .gallery img { width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:6px; cursor:pointer; transition:opacity 0.2s; }
+  .gallery img:hover { opacity:0.85; }
+
+  .lightbox { display:none; position:fixed; top:0;left:0;right:0;bottom:0; background:rgba(0,0,0,0.92); z-index:200; justify-content:center; align-items:center; cursor:pointer; }
+  .lightbox.active { display:flex; }
+  .lightbox img { max-width:90vw; max-height:90vh; border-radius:6px; }
+
+  @media (max-width:768px) {
+    .container { padding:1.5rem 1.25rem 4rem; }
+    h1 { font-size:1.5rem; }
+    .two-col { grid-template-columns:1fr; }
+    .gallery { grid-template-columns:repeat(2,1fr); }
+  }
+</style>
+</head>
+<body>
+
+<a class="back" href="https://dl-burger.github.io/xigua/">← 返回作品集</a>
+
+<div class="container">
+
+<h1>David the Helldiver 游戏设计文档</h1>
+
+<!-- ===== 一、游戏概述 ===== -->
+<h2>一、游戏概述</h2>
+
+<h3>游戏定位</h3>
+<p>《David the Helldiver》是一款融合《潜水员戴夫》游戏风格和资源探索玩法，以及《绝地潜兵2》世界观与战斗要素的横版 2D 像素风格水下动作采集类游戏。</p>
+
+<h3>游戏背景</h3>
+<p>玩家将扮演超级地球远征军中一名因故远离前线名为 David 的绝地潜兵，被投放至一处偏远的行星科研站，负责领导守备部队并保卫科研人员。</p>
+<p>该科研站发现，当地海域中出现了大量 710 物质和疑似变异进化的水生终结族群落，并且近期该星球及科研站还受到了光能族罕见地频繁进攻。</p>
+<p>为了调查这些异常现象，玩家奉命在白天探索海域深处，搜集生物样品和资源，晚上则负责指挥科研站抵御光能族的进攻。</p>
+
+<h3>核心玩法</h3>
+<ul>
+  <li>白天：单人水下探索，战斗收集资源，推进科研站升级</li>
+  <li>夜晚：轻度塔防模式，指挥阵地防御，抵御光能族多批次进攻</li>
+  <li>战备呼叫系统：分为白天（个人武器）和夜晚（塔防武器）两部分</li>
+  <li>叙事：随探索深入和时间推进，逐步揭开事件背后的真相</li>
+</ul>
+
+<h3>设计目标</h3>
+<p>目标人群：喜爱战斗 + 资源采集升级，但想要更具挑战性的探索与战斗过程的玩家。</p>
+<p>结合《潜水员戴夫》优秀的资源升级系统，以及《绝地潜兵2》丰富的战斗系统和怪物设计思路，为玩家带来更加爽快的体验。</p>
+<p>注：该项目本身为验证、展示游戏策划方案的 Demo；部分要素引用其他游戏仅为个人喜好，不代表实际商用授权。</p>
+
+<!-- ===== 二、玩法设计 ===== -->
+<h2>二、玩法设计</h2>
+
+<h3>2.1 单局流程</h3>
+<p>循环模式：白天探索 → 返回科研站升级 → 夜晚防御 → 推进剧情</p>
+<p>未完成也可撤离，但无法获得关键奖励和推进剧情。</p>
+
+<h3>2.2 核心场景设计</h3>
+
+<h4>科研站</h4>
+<p>玩家进行战斗准备和装备升级的场所，也是任务剧情主要发生以及串联两个战斗玩法的核心场景。</p>
+
+<h4>白天 — 单人水下战斗</h4>
+<img class="doc-img" src="assets/image-20260514165503444.png" alt="水下战斗场景">
+<p>玩家投入海洋战斗，搜集样本和资源，完成任务后撤离。需管理：氧气（左上角）+ 生命值 + 体力 + 武器弹药（左下角）+ 战备冷却（右上角）+ 背包重量等，选择战斗和探索的时机。</p>
+
+<h4>夜晚 — 轻塔防战斗</h4>
+<img class="doc-img" src="assets/image-20260514171543761.png" alt="夜晚塔防">
+<ul>
+  <li>左侧为光能族进攻敌人，右侧为玩家防守阵地</li>
+  <li>玩家可通过战备呼叫（右上角）武器攻击敌人</li>
+  <li>鼠标选择哨戒炮等阵地武器的落点</li>
+  <li>阵地上有自动攻击的 SEAF 友方部队</li>
+  <li>敌人分多批次进攻，批次越靠后数量越多</li>
+  <li>战斗胜利推进剧情并获得奖励，失败将给白天探索带来 debuff</li>
+</ul>
+
+<!-- ===== 三、系统设计 ===== -->
+<h2>三、系统设计</h2>
+
+<h3>3.1 角色系统</h3>
+
+<h4>基本操作</h4>
+<ul>
+  <li>WASD：水下移动</li>
+  <li>Shift：消耗体力冲刺</li>
+  <li>鼠标：控制射击方向和射击</li>
+</ul>
+
+<h4>特殊操作</h4>
+<ul>
+  <li>治疗针：按数字 4 键使用，恢复满格生命值</li>
+  <li>战备呼叫：按住 Ctrl + 按顺序按方向键呼叫支援；呼叫时时间减缓但无法移动</li>
+</ul>
+
+<h4>核心属性</h4>
+<table>
+  <tr><th>属性</th><th>数值</th><th>说明</th></tr>
+  <tr><td>生命值</td><td>100 点</td><td>归零即死亡</td></tr>
+  <tr><td>体力值</td><td>—</td><td>归零 5 秒后恢复</td></tr>
+  <tr><td>氧气</td><td>300 点（Demo 为 900 点）</td><td>每秒消耗 1 点，等同于战斗时限</td></tr>
+</table>
+
+<h3>3.2 地图系统</h3>
+<p>设计：随机地形 + 固定任务地点</p>
+
+<h4>海域分层</h4>
+<table>
+  <tr><th>层级</th><th>占比</th><th>特点</th></tr>
+  <tr><td>浅水层</td><td>40%</td><td>可视范围大，多为小型生物和基础资源</td></tr>
+  <tr><td>深水层</td><td>30%</td><td>可视范围下降，出现大型生物和重要资源</td></tr>
+  <tr><td>超深层</td><td>30%</td><td>可视范围仅 50%，出现 BOSS 级单位和特殊资源</td></tr>
+</table>
+
+<h4>深度惩罚</h4>
+<p>海水深度每下降 1%，玩家视野下降 0.7%；可视范围外的单位仅显示灰色模糊轮廓。</p>
+
+<h3>3.3 武器系统</h3>
+<p>说明：除初始主武器外，其余武器均需通过战备呼叫投送，每种武器有独立冷却时间。</p>
+
+<table>
+  <tr><th>类别</th><th>名称</th><th>效果</th><th>冷却时长</th></tr>
+  <tr><td>主武器（白天）</td><td>自动步枪（初始）</td><td>连续发射子弹</td><td>无</td></tr>
+  <tr><td>主武器（白天）</td><td>霰弹枪</td><td>一次发射多颗子弹，伤害可叠加</td><td>无</td></tr>
+  <tr><td>主武器（白天）</td><td>狙击枪</td><td>一次发射一颗高伤害子弹</td><td>无</td></tr>
+  <tr><td>副武器（白天）</td><td>冲锋枪</td><td>快速发射大量子弹</td><td>短</td></tr>
+  <tr><td>副武器（白天）</td><td>自动瞄准手枪</td><td>自动锁定敌方单位</td><td>短</td></tr>
+  <tr><td>副武器（白天）</td><td>核弹手枪</td><td>发射小型抛物线炸弹，造成巨额范围伤害</td><td>中等</td></tr>
+  <tr><td>投掷武器（白天）</td><td>诱饵地雷</td><td>吸引敌方单位，3 秒后爆炸</td><td>中等</td></tr>
+  <tr><td>投掷武器（白天）</td><td>便携式鱼雷</td><td>直线弹道，碰炸造成小范围爆炸</td><td>长</td></tr>
+  <tr><td>投掷武器（白天）</td><td>地狱火背包</td><td>按 X 部署，15 秒后造成大范围巨额伤害</td><td>长</td></tr>
+  <tr><td>驱逐舰武器（夜晚）</td><td>轨道凝固汽油弹</td><td>持续范围火焰伤害</td><td>长</td></tr>
+  <tr><td>驱逐舰武器（夜晚）</td><td>轨道激光</td><td>持续 5 秒激光扫射</td><td>长</td></tr>
+  <tr><td>阵地武器（夜晚）</td><td>哨戒加特林</td><td>自动扫射，优先攻击最前方敌人</td><td>短</td></tr>
+  <tr><td>阵地武器（夜晚）</td><td>哨戒火箭炮</td><td>自动瞄准中大型敌人发射火箭</td><td>短</td></tr>
+  <tr><td>阵地武器（夜晚）</td><td>火焰地雷</td><td>敌人踩中后造成范围火焰伤害</td><td>短</td></tr>
+</table>
+
+<h3>3.4 单位系统 — 敌人（水下部分）</h3>
+<p>目标总数：40+ 种</p>
+
+<h4>敌人刷新机制</h4>
+<ul>
+  <li>地图分布巡逻队（1 中型 + 5~6 小型敌人）</li>
+  <li>大型单位仅在巢穴附近刷新</li>
+  <li>玩家 1 分钟未攻击，敌人总数恢复到初始水平</li>
+</ul>
+
+<table>
+  <tr><th>单位名称</th><th>分布范围</th><th>技能习性</th><th>伤害</th><th>血量</th></tr>
+  <tr><td>小型扑击虫</td><td>浅/深层海域</td><td>蓄力直线飞扑</td><td>低</td><td>低</td></tr>
+  <tr><td>小型追击虫</td><td>浅/深层海域</td><td>持续追击玩家</td><td>低</td><td>低</td></tr>
+  <tr><td>中型声波虫</td><td>浅/深层海域</td><td>发射远程音波，命中造成 2 秒硬直</td><td>低</td><td>中等</td></tr>
+  <tr><td>中型指挥官</td><td>浅/深层海域</td><td>咆哮使附近敌人移速提升 30%</td><td>中</td><td>中等</td></tr>
+  <tr><td>大型喷射虫</td><td>深/超深层海域</td><td>喷射 710 物质，命中后玩家视野大幅缩小</td><td>高</td><td>高</td></tr>
+  <tr><td>大型吞噬虫</td><td>深/超深层海域</td><td>蓄力吸引范围内单位</td><td>极高</td><td>高</td></tr>
+  <tr><td>小型抱脸虫</td><td>超深层海域</td><td>弧形飞扑，命中后玩家只能使用近战</td><td>低</td><td>低</td></tr>
+  <tr><td>巨型鱿虫</td><td>超深层海域</td><td>根据距离切换远程激光/近战爪击</td><td>高</td><td>极高</td></tr>
+</table>
+
+<h3>3.4 单位系统 — 中立单位</h3>
+<p>目标总数：60+ 种</p>
+
+<table>
+  <tr><th>单位名称</th><th>分布范围</th><th>习性特点</th><th>速度</th></tr>
+  <tr><td>小型普通飞鱼</td><td>浅层海域</td><td>10 只左右楔形队列成群移动</td><td>快</td></tr>
+  <tr><td>小型幽夜海螺</td><td>浅/深层海域</td><td>远程易击杀，靠近会缩壳，击杀所需伤害提升 5 倍</td><td>慢</td></tr>
+  <tr><td>小型原始水虫</td><td>所有海域</td><td>地图随处可见</td><td>中等</td></tr>
+  <tr><td>中型骨鱼</td><td>浅/深层海域</td><td>移动缓慢的高血量生物</td><td>中等</td></tr>
+  <tr><td>中型人脸鱿鱼</td><td>深/超深层海域</td><td>受击后生成光能水泡保护自己</td><td>中等</td></tr>
+  <tr><td>中型黑鳗</td><td>深层海域</td><td>高速移动的深海生物</td><td>快</td></tr>
+  <tr><td>巨型光能原始鱿鱼</td><td>超深层海域</td><td>受击后生成光能水泡反击，靠近玩家可提供视野增益</td><td>快</td></tr>
+  <tr><td>巨型跃鲸</td><td>超深层海域</td><td>受击后移速提升 3 倍并攻击玩家</td><td>快</td></tr>
+</table>
+
+<h3>3.5 任务系统</h3>
+<p>每局战斗前会赋予 1~2 项与剧情相关的任务，完成可获得超级货币奖励。</p>
+<p>示例任务：「夺取终结族巢穴样本」</p>
+<ul>
+  <li>需要深入巢穴，清除敌人</li>
+  <li>采集分为 3 个阶段，不能离采集点太远否则进度回退</li>
+  <li>每个阶段开始后敌人会增援</li>
+  <li>巢穴内无法呼叫战备支援</li>
+</ul>
+
+<h3>3.6 背包系统</h3>
+<ul>
+  <li>按 B 键打开背包</li>
+  <li>初始载重：30 kg（Demo 为 100 kg 方便测试）</li>
+  <li>超重规则：可超重 100%；超重 30% 移速降为 80%；超重 30% 以上移速降为 50%</li>
+</ul>
+
+<h3>3.7 资源系统</h3>
+<table>
+  <tr><th>资源名称</th><th>获得方式</th><th>用途</th></tr>
+  <tr><td>样本</td><td>击杀敌人/中立单位掉落</td><td>解锁/升级个人武器</td></tr>
+  <tr><td>超级货币</td><td>完成任务/抵御光能族入侵</td><td>解锁/升级驱逐舰、阵地武器</td></tr>
+  <tr><td>植物</td><td>浅层海域采集</td><td>解锁科研站个性化功能</td></tr>
+  <tr><td>矿石</td><td>浅/中层海域采集</td><td>解锁科研站个性化功能</td></tr>
+  <tr><td>残骸</td><td>超深层海域采集</td><td>解锁科研站个性化功能</td></tr>
+  <tr><td>鱿鱼卵</td><td>深/超深层海域采集</td><td>解锁高级科研站功能</td></tr>
+  <tr><td>710 结晶</td><td>超深层海域采集</td><td>特殊升级资源</td></tr>
+  <tr><td>巨型鱿鱼卵</td><td>超深层海域采集</td><td>解锁高级科研站功能</td></tr>
+</table>
+
+<h3>3.8 升级系统</h3>
+<table>
+  <tr><th>升级设施</th><th>功能</th><th>所需资源</th></tr>
+  <tr><td>武器站</td><td>解锁、升级武器（Demo 默认全部解锁）</td><td>终结族样本、超级货币、特殊资源</td></tr>
+  <tr><td>科研台</td><td>解锁高级功能（移速、背包载重等）</td><td>中立单位样本、鱿鱼卵、巨型卵等</td></tr>
+  <tr><td>工作台</td><td>解锁科研站个性化功能</td><td>植物、矿石、残骸等</td></tr>
+</table>
+
+<h3>3.9 图鉴系统</h3>
+<p>暂未实装。目的是提升玩家探索收获感，增强探索战斗动力。</p>
+
+<!-- ===== 四、游戏叙事 ===== -->
+<h2>四、游戏叙事</h2>
+
+<h3>背景</h3>
+<p>超级地球在偏远无人星球的海洋边建立科研站，探索人员水下失踪；唯一幸存者带回高纯度 710 结晶，超级地球派遣因误杀平民被调离前线的 David 前来调查。</p>
+
+<h3>前期</h3>
+<p>David 初到科研站，承担探索和防御任务；发现终结族是探索人员失踪的元凶；完成击杀终结族、夺取巢穴样本、首次抵御光能族进攻等事件。</p>
+
+<h3>中期</h3>
+<p>深入海洋后发现大量失踪人员残骸，接触发光鱿鱼；意识到发光鱿鱼是光能族进攻的原因，且具有初级智能；同时确认 710 结晶是深海高压环境形成，难以量产。</p>
+
+<h3>结局</h3>
+<p>David 发现光能族进攻是为了挽救进化祖先原始鱿鱼；超级地球扩张导致终结族入侵该星球，造成生态污染，生物变异出鱿虫；玩家成功抵御进攻，但最后驱逐舰被击落，大量光能族战舰降临……</p>
+
+<!-- ===== 五、Demo 截图 ===== -->
+<h2>五、Demo 截图</h2>
+
+<div class="gallery">
+  <img src="assets/image-20260514165842184.png" alt="水下战斗" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514165902180.png" alt="海底探索" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514165919619.png" alt="深海场景" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514165928523.png" alt="敌人遭遇" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514165945371.png" alt="资源采集" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514170002976.png" alt="武器系统" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514170012387.png" alt="BOSS 战" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514171532221.png" alt="科研站" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514171543761.png" alt="夜晚塔防" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514171555663.png" alt="战斗特写" onclick="openLightbox(this.src)" loading="lazy">
+  <img src="assets/image-20260514172003020.png" alt="BOSS 对战" onclick="openLightbox(this.src)" loading="lazy">
+</div>
+
+</div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
