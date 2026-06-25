@@ -200,7 +200,12 @@
   }
   .featured-game .fg-name { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--text); }
   .featured-game .fg-hours { font-size: 1.5rem; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; margin-bottom: 0.4rem; }
-  .featured-game .fg-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+  .featured-game .fg-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .featured-game .fg-achieve {
+    font-size: 0.78rem; font-weight: 500; color: var(--accent);
+    padding: 0.15rem 0.55rem; background: var(--accent-subtle); border-radius: 4px;
+    display: inline-block; margin-bottom: 0.6rem;
+  }
   .featured-game .fg-note { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
 
   /* 品类分组 */
@@ -226,6 +231,11 @@
   .mini-game .mg-name { font-weight: 500; color: var(--text); }
   .mini-game .mg-hours { font-size: 0.7rem; color: var(--text-muted); }
   .mini-game .mg-note { font-size: 0.7rem; color: var(--text-muted); margin-left: 0.25rem; }
+  .mini-game .mg-achieve {
+    font-size: 0.68rem; color: var(--accent); font-weight: 500;
+    padding: 0.1rem 0.4rem; background: var(--accent-subtle); border-radius: 3px;
+    margin-left: 0.2rem;
+  }
 
   .more-games {
     margin-top: 1.5rem; padding: 1.25rem 1.5rem;
@@ -283,6 +293,7 @@
     <ul class="links">
       <li><a href="#experience">游戏经历</a></li>
       <li><a href="#delta">三角洲分析</a></li>
+      <li><a href="#yanyun">燕云分析</a></li>
       <li><a href="#david">David</a></li>
       <li><a href="#elevator">Elevator</a></li>
       <li><a href="#about">关于我</a></li>
@@ -323,6 +334,7 @@
       <div class="fg-name">守望先锋</div>
       <div class="fg-hours">5,000+ 小时</div>
       <div class="fg-sub">2016 起至今 · 10 年 · 英雄射击</div>
+      <div class="fg-achieve">🏆 铂金段位</div>
       <div class="fg-note">深度体验英雄设计、团队配合与竞技平衡。对技能型 FPS 的角色定位与地图设计有长期观察。</div>
     </div>
     <div class="featured-game">
@@ -330,13 +342,15 @@
       <div class="fg-name">燕云十六声</div>
       <div class="fg-hours">1,500+ 小时</div>
       <div class="fg-sub">武侠开放世界</div>
+      <div class="fg-achieve">🏆 收集度 80%</div>
       <div class="fg-note">深入体验开放世界叙事、探索驱动与动作战斗融合。对武侠题材的世界构建与沉浸感设计有独到见解。</div>
     </div>
     <div class="featured-game">
       <div class="fg-badge">核心参考</div>
       <div class="fg-name">三角洲行动</div>
       <div class="fg-hours">1,000+ 小时</div>
-      <div class="fg-sub">最高段位 · 资产破 10 亿</div>
+      <div class="fg-sub">Extraction Shooter · 主玩航天基地</div>
+      <div class="fg-achieve">🏆 最高段位 · 资产破 10 亿</div>
       <div class="fg-note">主玩航天基地，深入体验付费设计、赛季运营、撤离心理模型。已产出完整品类分析报告。</div>
     </div>
     <div class="featured-game">
@@ -344,6 +358,7 @@
       <div class="fg-name">永劫无间</div>
       <div class="fg-hours">1,500+ 小时</div>
       <div class="fg-sub">冷兵器大逃杀</div>
+      <div class="fg-achieve">🏆 三排最高段位</div>
       <div class="fg-note">近战博弈、飞索位移、技能连招。对动作竞技游戏的战斗节奏与博弈设计有深入理解。</div>
     </div>
   </div>
@@ -352,41 +367,40 @@
   <div class="category-group">
     <div class="cat-label">🎯 射击 / 战术竞技</div>
     <div class="cat-games">
-      <span class="mini-game"><span class="mg-name">守望先锋</span><span class="mg-hours">5,000+h</span><span class="mg-note">10年</span></span>
-      <span class="mini-game"><span class="mg-name">燕云十六声</span><span class="mg-hours">1,500h</span></span>
-      <span class="mini-game"><span class="mg-name">七日世界</span><span class="mg-hours">2,000+h</span><span class="mg-note">内测起</span></span>
-      <span class="mini-game"><span class="mg-name">CS:GO</span><span class="mg-hours">800h</span></span>
-      <span class="mini-game"><span class="mg-name">PUBG</span><span class="mg-hours">600h</span></span>
-      <span class="mini-game"><span class="mg-name">绝地潜兵 2</span><span class="mg-hours">300h</span><span class="mg-note">126级 · David 项目参考</span></span>
-      <span class="mini-game"><span class="mg-name">逃离塔科夫</span><span class="mg-hours">200h</span></span>
-      <span class="mini-game"><span class="mg-name">泰坦陨落 2</span><span class="mg-hours">100h</span></span>
+      <span class="mini-game"><span class="mg-name">守望先锋</span><span class="mg-hours">5,000+h</span><span class="mg-note">10年</span><span class="mg-achieve">铂金</span></span>
+      <span class="mini-game"><span class="mg-name">七日世界</span><span class="mg-hours">2,000+h</span><span class="mg-note">内测起</span><span class="mg-achieve">全武器图纸解锁</span></span>
+      <span class="mini-game"><span class="mg-name">CS:GO</span><span class="mg-hours">800h</span><span class="mg-achieve">AK段位</span></span>
+      <span class="mini-game"><span class="mg-name">PUBG</span><span class="mg-hours">600h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">绝地潜兵 2</span><span class="mg-hours">300h</span><span class="mg-note">126级 · David 项目参考</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">逃离塔科夫</span><span class="mg-hours">200h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">泰坦陨落 2</span><span class="mg-hours">100h</span><span class="mg-achieve">成就90%+</span></span>
     </div>
   </div>
 
   <div class="category-group">
     <div class="cat-label">⚔️ 动作 / 近战</div>
     <div class="cat-games">
-      <span class="mini-game"><span class="mg-name">永劫无间</span><span class="mg-hours">1,500+h</span></span>
-      <span class="mini-game"><span class="mg-name">只狼：影逝二度</span><span class="mg-hours">200h</span></span>
-      <span class="mini-game"><span class="mg-name">黑神话：悟空</span><span class="mg-hours">150h</span></span>
+      <span class="mini-game"><span class="mg-name">永劫无间</span><span class="mg-hours">1,500+h</span><span class="mg-achieve">三排最高段位</span></span>
+      <span class="mini-game"><span class="mg-name">只狼：影逝二度</span><span class="mg-hours">200h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">黑神话：悟空</span><span class="mg-hours">150h</span><span class="mg-achieve">成就90%+</span></span>
     </div>
   </div>
 
   <div class="category-group">
     <div class="cat-label">🧙 RPG / 开放世界</div>
     <div class="cat-games">
-      <span class="mini-game"><span class="mg-name">天国：拯救 1/2</span><span class="mg-hours">400h</span></span>
-      <span class="mini-game"><span class="mg-name">博德之门 3</span><span class="mg-hours">200h</span></span>
-      <span class="mini-game"><span class="mg-name">赛博朋克 2077</span><span class="mg-hours">150h</span></span>
-      <span class="mini-game"><span class="mg-name">潜水员戴夫</span><span class="mg-hours">100h</span><span class="mg-note">David 项目核心参考</span></span>
+      <span class="mini-game"><span class="mg-name">天国：拯救 1/2</span><span class="mg-hours">400h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">博德之门 3</span><span class="mg-hours">200h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">赛博朋克 2077</span><span class="mg-hours">150h</span><span class="mg-achieve">成就90%+</span></span>
+      <span class="mini-game"><span class="mg-name">潜水员戴夫</span><span class="mg-hours">100h</span><span class="mg-note">David 项目核心参考</span><span class="mg-achieve">成就90%+</span></span>
     </div>
   </div>
 
   <div class="category-group">
     <div class="cat-label">🐾 回合制 / 模拟经营</div>
     <div class="cat-games">
-      <span class="mini-game"><span class="mg-name">洛克王国</span><span class="mg-hours">400h</span></span>
-      <span class="mini-game"><span class="mg-name">城市：天际线</span><span class="mg-hours">300h</span></span>
+      <span class="mini-game"><span class="mg-name">洛克王国</span><span class="mg-hours">400h</span><span class="mg-achieve">全收集</span></span>
+      <span class="mini-game"><span class="mg-name">城市：天际线</span><span class="mg-hours">300h</span><span class="mg-achieve">成就90%+</span></span>
     </div>
   </div>
 
@@ -408,9 +422,9 @@
   </div>
 
   <div class="project">
-    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1a0a 0%, #2d2d15 40%, #1a1a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c8b87c;font-family:monospace;">
-      <div style="font-size:2.5rem;margin-bottom:0.5rem;letter-spacing:0.15rem;">Δ</div>
-      <div style="font-size:0.85rem;opacity:0.5;">DELTA FORCE · 危险行动模式</div>
+    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1a0a 0%, #2d2d15 40%, #1a1a0a 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#c8b87c;font-family:monospace;position:relative;">
+      <img src="assets/delta/logo.png" alt="三角洲行动" style="max-width:320px;max-height:80px;object-fit:contain;position:relative;z-index:1;">
+      <div style="font-size:0.85rem;opacity:0.5;margin-top:0.75rem;">DELTA FORCE · 危险行动模式</div>
     </div>
     <div class="project-body">
       <h3>三角洲行动（危险行动模式）深度体验和拆解分析报告</h3>
@@ -472,6 +486,84 @@
         <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 查看原文：</span>
         <span style="font-size:0.82rem;color:var(--text-secondary);">
           <a href="delta-report.html" target="_blank" style="color:var(--accent);text-decoration:underline;">完整拆解分析报告</a>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 燕云十六声分析 -->
+<div class="divider"><hr></div>
+<section class="section" id="yanyun">
+  <div class="section-header">
+    <h2>燕云十六声 · 深度拆解分析</h2>
+    <p>开放世界武侠 · 1,500+ 小时深度体验</p>
+  </div>
+
+  <div class="project">
+    <div style="width:100%;height:200px;background:linear-gradient(160deg, #1a1208 0%, #2d1f0e 40%, #4a3520 60%, #1a1208 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;color:#d4a96a;font-family:monospace;position:relative;">
+      <img src="assets/yanyun/logo.png" alt="燕云十六声" style="max-width:300px;max-height:70px;object-fit:contain;position:relative;z-index:1;">
+      <div style="font-size:0.85rem;opacity:0.5;margin-top:0.75rem;">YANYUN · WHERE WINDS MEET</div>
+    </div>
+    <div class="project-body">
+      <h3>燕云十六声 深度体验与拆解分析报告</h3>
+      <p class="role">个人分析项目 · 1,500+ 小时游戏时长 · 清河/开封/河西三图主线全清</p>
+      <p class="desc">
+        基于对《燕云十六声》1,500+ 小时的深度体验，从市场表现、核心玩法系统（无门派武学、攻防战斗、开放世界探索）、
+        付费设计、竞品对比等维度进行的系统性拆解分析。通过沉浸式体验三张大地图全部内容，
+        结合 AppMagic、SteamDB、TapTap 等多源数据，产出的一份涵盖市场分析、玩法拆解与系统评估的完整策划视角分析报告。
+      </p>
+
+      <div class="tags">
+        <span class="tag">开放世界</span>
+        <span class="tag">武侠动作RPG</span>
+        <span class="tag">品类分析</span>
+        <span class="tag">市场数据</span>
+        <span class="tag">付费设计</span>
+        <span class="tag">竞品对比</span>
+        <span class="tag">风险预警</span>
+      </div>
+
+      <div class="meta-grid">
+        <div class="meta-item"><div class="label">体验时长</div><div class="value">1,500+ 小时</div></div>
+        <div class="meta-item"><div class="label">数据维度</div><div class="value">下载量 / 收入 / 口碑 / 竞品</div></div>
+        <div class="meta-item"><div class="label">数据来源</div><div class="value">12+ 渠道交叉验证</div></div>
+        <div class="meta-item"><div class="label">核心洞察</div><div class="value">无门派武学 / 纯外观付费 / 定位矛盾</div></div>
+      </div>
+
+      <div class="highlights">
+        <div class="highlight-card">
+          <div class="hl-title">市场表现分析</div>
+          <div class="hl-content">
+            综合百度百科、智通财经、游戏葡萄、陀螺科技、杭州日报、交银国际研报、网易2025Q4财报、
+            AppMagic、点点数据、七麦数据等 12+ 渠道数据，分析了游戏全球 8000 万玩家、移动端 14 个月约 1.15 亿美元收入、
+            Steam 84%-88% 好评率、Steam 全球热销榜 Top 2 等关键指标，
+            以及「双引擎」用户增长模式（移动端 + 海外版两次爆发）的完整轨迹。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">核心玩法系统深度拆解</div>
+          <div class="hl-content">
+            三大核心系统逐一拆解：无门派自由武学（从底层逻辑改变武侠游戏玩法结构）、
+            攻防反馈战斗（卸势/反击双层结构 + 环境交互，用机制而非数值驱动深度）、
+            开放世界探索（700+ 交互点 + NPC 动态生态，断档级密度）。
+            每个系统均含设计目标、用户体验、优缺点分析与优化建议。
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="hl-title">付费设计与竞品格局</div>
+          <div class="hl-content">
+            纯外观付费（Cosmetic-Only）模式分析，三大付费入口（外观商城/赛季通行证/月度通行证）的实际表现，
+            不卖数值的商业验证（14 个月 1.15 亿美元）。5 款核心竞品（逆水寒/原神/永劫无间/黑神话：悟空）11 维度对比矩阵，
+            揭示燕云「高品质单机+可选多人+纯外观」的独特定位与「全都要」的多线竞争风险。
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.25rem;padding:1rem 1.25rem;background:var(--highlight-bg);border-radius:8px;">
+        <span style="font-weight:600;font-size:0.85rem;color:var(--accent);">📄 查看原文：</span>
+        <span style="font-size:0.82rem;color:var(--text-secondary);">
+          <a href="yanyun-report.html" target="_blank" style="color:var(--accent);text-decoration:underline;">完整拆解分析报告</a>
         </span>
       </div>
     </div>
